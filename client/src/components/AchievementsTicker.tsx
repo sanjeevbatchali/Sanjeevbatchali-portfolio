@@ -8,44 +8,29 @@ export default function AchievementsTicker() {
   ];
 
   return (
-    <div className="w-full py-12">
-      <div className="relative overflow-hidden group-achievements">
-        <div className="flex gap-12 animate-scroll-achievements" data-testid="ticker-achievements">
-          {[...achievements, ...achievements, ...achievements].map((achievement, index) => (
+    <div className="w-full py-12 px-6 md:px-12">
+      <div className="max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6" data-testid="achievements-grid">
+          {achievements.map((achievement, index) => (
             <div 
-              key={index} 
-              className="flex-shrink-0 flex items-baseline gap-3"
-              data-testid={`achievement-${index % achievements.length}`}
+              key={index}
+              className="achievement-card flex flex-col items-center justify-center p-8 rounded-lg border border-border/50"
+              data-testid={`achievement-card-${index}`}
+              style={{
+                background: 'linear-gradient(135deg, hsl(var(--primary) / 0.03) 0%, hsl(var(--primary) / 0.08) 100%)',
+                boxShadow: '0 4px 20px -4px hsl(var(--primary) / 0.15)'
+              }}
             >
-              <span className="font-accent font-bold text-5xl md:text-6xl text-foreground grayscale">
+              <div className="font-accent font-bold text-5xl md:text-6xl text-foreground mb-3" data-testid={`achievement-number-${index}`}>
                 {achievement.number}
-              </span>
-              <span className="font-medium text-lg md:text-xl text-muted-foreground whitespace-nowrap grayscale">
+              </div>
+              <div className="font-medium text-sm md:text-base text-muted-foreground text-center leading-snug" data-testid={`achievement-text-${index}`}>
                 {achievement.text}
-              </span>
+              </div>
             </div>
           ))}
         </div>
       </div>
-
-      <style>{`
-        @keyframes scroll-achievements {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(calc(-100% / 3));
-          }
-        }
-        
-        .animate-scroll-achievements {
-          animation: scroll-achievements 35s linear infinite;
-        }
-
-        .group-achievements:hover .animate-scroll-achievements {
-          animation-play-state: paused;
-        }
-      `}</style>
     </div>
   );
 }
