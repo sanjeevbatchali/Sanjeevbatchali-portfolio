@@ -33,7 +33,7 @@ export default function SkillsSection() {
   return (
     <section className="min-h-screen py-16 md:py-24 px-6 md:px-12 flex items-center justify-center" id="skills">
       <div className="max-w-6xl mx-auto w-full">
-        <h2 className="font-accent font-bold text-3xl md:text-4xl lg:text-5xl mb-12 text-center" data-testid="text-section-title">
+        <h2 className="font-accent font-bold text-4xl md:text-5xl lg:text-6xl mb-12 text-center" data-testid="text-section-title">
           Skills & Expertise
         </h2>
 

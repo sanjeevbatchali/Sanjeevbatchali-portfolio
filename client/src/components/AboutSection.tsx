@@ -2,7 +2,7 @@ export default function AboutSection() {
   return (
     <section className="min-h-screen flex items-center justify-center px-6 md:px-12 py-16">
       <div className="max-w-4xl w-full">
-        <h2 className="font-accent font-bold text-4xl md:text-5xl mb-8 text-center" data-testid="text-about-heading">
+        <h2 className="font-accent font-bold text-4xl md:text-5xl lg:text-6xl mb-12 text-center" data-testid="text-about-heading">
           About Me
         </h2>
         
