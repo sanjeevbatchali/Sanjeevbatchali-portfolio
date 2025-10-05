@@ -61,7 +61,7 @@ export default function ExperienceSection() {
   ];
 
   return (
-    <section className="min-h-screen py-16 md:py-24 px-6 md:px-12 bg-muted/30" id="experience">
+    <section className="min-h-screen py-16 md:py-24 px-6 md:px-12 bg-muted/30">
       <div className="max-w-6xl mx-auto">
         <h2 className="font-accent font-bold text-4xl md:text-5xl lg:text-6xl mb-12 text-center" data-testid="text-section-title">
           Experience

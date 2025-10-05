@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import HeroSection from '@/components/HeroSection';
+import AboutSection from '@/components/AboutSection';
+import AchievementsTicker from '@/components/AchievementsTicker';
 import ExperienceSection from '@/components/ExperienceSection';
 import SkillsSection from '@/components/SkillsSection';
 import CertificationsSection from '@/components/CertificationsSection';
@@ -36,16 +38,20 @@ export default function Home() {
         <div id="hero" className="scroll-section section-hero">
           <HeroSection />
         </div>
-        <div className="scroll-section section-experience">
+        <div id="about" className="scroll-section section-about">
+          <AboutSection />
+          <AchievementsTicker />
+        </div>
+        <div id="experience" className="scroll-section section-experience">
           <ExperienceSection />
         </div>
-        <div className="scroll-section section-skills">
+        <div id="skills" className="scroll-section section-skills">
           <SkillsSection />
         </div>
-        <div className="scroll-section section-certifications">
+        <div id="certifications" className="scroll-section section-certifications">
           <CertificationsSection />
         </div>
-        <div className="scroll-section section-contact">
+        <div id="contact" className="scroll-section section-contact">
           <ContactSection />
         </div>
       </main>
