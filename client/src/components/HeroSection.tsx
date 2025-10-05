@@ -38,7 +38,8 @@ export default function HeroSection() {
         </div>
         <div className="lg:col-span-2 flex justify-center lg:justify-end">
           <div className="relative">
-            <div className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-lg overflow-hidden border-2 border-primary shadow-lg">
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-primary/20 to-transparent rounded-lg blur-2xl transform scale-110" />
+            <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-lg overflow-hidden border-2 border-primary shadow-2xl">
               <img 
                 src={profileImage} 
                 alt="Sanjeev Batchali" 
