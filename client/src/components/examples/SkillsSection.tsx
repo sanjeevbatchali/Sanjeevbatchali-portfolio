@@ -1,5 +1,9 @@
 import SkillsSection from '../SkillsSection';
 
 export default function SkillsSectionExample() {
-  return <SkillsSection />;
+  return (
+    <div className="bg-background">
+      <SkillsSection />
+    </div>
+  );
 }
