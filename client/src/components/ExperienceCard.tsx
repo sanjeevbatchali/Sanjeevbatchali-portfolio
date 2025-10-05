@@ -43,8 +43,8 @@ const HighlightedText = ({ text }: { text: string }) => {
 
 export default function ExperienceCard({ company, position, period, achievements }: ExperienceCardProps) {
   return (
-    <Card className="p-6 md:p-8 hover-elevate" data-testid={`card-experience-${company.toLowerCase().replace(/\s+/g, '-')}`}>
-      <div className="flex items-start gap-4 mb-4">
+    <Card className="p-6 md:p-8 hover-elevate shadow-md" data-testid={`card-experience-${company.toLowerCase().replace(/\s+/g, '-')}`}>
+      <div className="flex items-start gap-4 mb-6">
         <div className="p-3 bg-primary/10 rounded-md">
           <Briefcase className="w-6 h-6 text-primary" />
         </div>
@@ -54,7 +54,7 @@ export default function ExperienceCard({ company, position, period, achievements
           <p className="text-sm text-muted-foreground" data-testid="text-period">{period}</p>
         </div>
       </div>
-      <ul className="space-y-3">
+      <ul className="space-y-4">
         {achievements.map((achievement, index) => (
           <li key={index} className="flex gap-3 text-sm md:text-base" data-testid={`text-achievement-${index}`}>
             <span className="text-primary mt-1.5 flex-shrink-0">•</span>
