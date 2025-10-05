@@ -77,25 +77,20 @@ export default function SkillsSection() {
                       className="flex-shrink-0 bg-card border border-card-border rounded-lg p-6 w-64 hover-elevate"
                       data-testid={`card-tech-skill-${index}`}
                     >
-                      <div className="flex items-center gap-3 mb-4">
+                      <div className="flex flex-col items-center gap-3 mb-4">
                         <div className="p-2 bg-muted/50 rounded-md">
                           <Icon className="w-6 h-6 text-muted-foreground grayscale opacity-70" />
                         </div>
-                        <h4 className="font-accent font-semibold text-xl" data-testid="text-tech-skill-name">
+                        <h4 className="font-accent font-semibold text-xl text-center" data-testid="text-tech-skill-name">
                           {skill.name}
                         </h4>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <div className="flex-1 bg-muted rounded-full h-2.5 overflow-hidden">
-                          <div 
-                            className="bg-chart-2 h-full rounded-full transition-all duration-300"
-                            style={{ width: `${skill.rating * 10}%` }}
-                            data-testid="progress-tech-skill"
-                          />
-                        </div>
-                        <span className="text-sm font-medium text-muted-foreground w-12 text-right" data-testid="text-tech-rating">
-                          {skill.rating}/10
-                        </span>
+                      <div className="w-full bg-muted/30 dark:bg-border/50 rounded-full h-2.5 overflow-hidden">
+                        <div 
+                          className="bg-chart-2 h-full rounded-full transition-all duration-300"
+                          style={{ width: `${skill.rating * 10}%` }}
+                          data-testid="progress-tech-skill"
+                        />
                       </div>
                     </div>
                   );
