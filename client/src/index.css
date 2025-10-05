@@ -356,3 +356,93 @@
     inset: -1px;
   }
 }
+
+/* Smooth scroll container */
+.scroll-container {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
+}
+
+/* Individual scroll sections */
+.scroll-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+  min-height: 100vh;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Visible state for sections */
+.scroll-section.section-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero section immediate visibility */
+.section-hero {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered animations for different sections */
+.section-experience.section-visible {
+  transition-delay: 0.1s;
+}
+
+.section-skills.section-visible {
+  transition-delay: 0.15s;
+}
+
+.section-certifications.section-visible {
+  transition-delay: 0.2s;
+}
+
+.section-contact.section-visible {
+  transition-delay: 0.25s;
+}
+
+/* Smooth scrollbar styling */
+.scroll-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.3);
+  border-radius: 4px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.5);
+}
+
+/* Enhanced navigation indicator */
+@keyframes pulse-indicator {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-container {
+    scroll-snap-type: none;
+  }
+  
+  .scroll-section {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
