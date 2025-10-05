@@ -7,6 +7,7 @@ import ExperienceSection from '@/components/ExperienceSection';
 import SkillsSection from '@/components/SkillsSection';
 import CertificationsSection from '@/components/CertificationsSection';
 import ContactSection from '@/components/ContactSection';
+import CosmicWave from '@/components/CosmicWave';
 
 export default function Home() {
   useEffect(() => {
@@ -33,6 +34,7 @@ export default function Home() {
 
   return (
     <div className="scroll-container">
+      <CosmicWave />
       <Navigation />
       <main>
         <div id="hero" className="scroll-section section-hero">
