@@ -119,14 +119,13 @@ Preferred communication style: Simple, everyday language.
 
 ### Enhancements Implemented:
 1. **Tagline Animation** - Slowed rotation from 0.5s to 2.5s for better readability
-2. **About Me Section** - Added personal narrative with hobbies (F1, web design, badminton, table tennis)
-   - Three content versions available in component (one active, two commented)
-3. **Achievements Ticker** - Quantified metrics displayed in greyscale with prominent numbers:
-   - 3+ Years Experience
-   - 20+ Financial Models Prepared
-   - 3+ Transactions Facilitated
-   - 30+ Pitch Decks Prepared
-   - 20+ Interactive Dashboards Built
+2. **About Me Section** - Added personal narrative with hobbies (F1, web design, badminton, table tennis) and Transaction Advisory focus (IPO, M&A, Turnaround Advisory)
+   - Three content versions available in component (Version 1 active with Transaction Advisory emphasis)
+3. **Achievements Section** - Redesigned as responsive grid with separate containers:
+   - Vertical layout: large numbers on top, descriptive text below
+   - Gradient backgrounds with subtle primary color shadows
+   - Responsive: 1 column (mobile) → 2 columns (tablet) → 5 columns (desktop)
+   - Metrics: 3+ Years Experience, 20+ Financial Models, 3+ Transactions, 30+ Pitch Decks, 20+ Dashboards
 4. **Mobile Navigation** - Responsive hamburger menu for tablets and phones
 5. **Profile Photo Enhancement** - Gradient backdrop (primary color) behind photo for visual depth
 6. **Card Refinements** - Improved spacing and subtle shadows on experience cards
