@@ -35,7 +35,7 @@ const HighlightedText = ({ text }: { text: string }) => {
   let result = text;
   highlights.forEach(keyword => {
     const regex = new RegExp(`\\b(${keyword})\\b`, 'gi');
-    result = result.replace(regex, '<strong class="font-semibold text-primary">$1</strong>');
+    result = result.replace(regex, '<strong class="font-semibold">$1</strong>');
   });
 
   return <span dangerouslySetInnerHTML={{ __html: result }} />;
