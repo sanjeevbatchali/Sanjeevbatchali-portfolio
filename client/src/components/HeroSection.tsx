@@ -14,7 +14,7 @@ export default function HeroSection() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTagline((prev) => (prev + 1) % taglines.length);
-    }, 500);
+    }, 2500);
 
     return () => clearInterval(interval);
   }, []);
