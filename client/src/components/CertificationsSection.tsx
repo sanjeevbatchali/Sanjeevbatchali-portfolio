@@ -48,7 +48,9 @@ export default function CertificationsSection() {
   const [scrollPosition, setScrollPosition] = useState(0);
   const cardWidth = 320;
   const gap = 32;
-  const maxScroll = (certifications.length - 3) * (cardWidth + gap);
+  const totalWidth = certifications.length * cardWidth + (certifications.length - 1) * gap;
+  const containerWidth = 3 * cardWidth + 2 * gap;
+  const maxScroll = Math.max(0, totalWidth - containerWidth);
 
   const scrollLeft = () => {
     setScrollPosition(prev => Math.max(0, prev - (cardWidth + gap)));
