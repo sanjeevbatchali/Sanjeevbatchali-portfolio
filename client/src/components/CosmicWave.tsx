@@ -82,7 +82,22 @@ export default function CosmicWave() {
             radial-gradient(1px 1px at 15% 90%, hsl(var(--primary) / 0.22), transparent),
             radial-gradient(2px 2px at 45% 15%, hsl(var(--primary) / 0.3), transparent),
             radial-gradient(1px 1px at 70% 40%, hsl(var(--primary) / 0.25), transparent),
-            radial-gradient(2px 2px at 25% 60%, hsl(var(--primary) / 0.3), transparent);
+            radial-gradient(2px 2px at 25% 60%, hsl(var(--primary) / 0.3), transparent),
+            radial-gradient(2px 2px at 12% 45%, hsl(var(--primary) / 0.32), transparent),
+            radial-gradient(1px 1px at 38% 25%, hsl(var(--primary) / 0.28), transparent),
+            radial-gradient(3px 3px at 55% 85%, hsl(var(--primary) / 0.35), transparent),
+            radial-gradient(2px 2px at 75% 55%, hsl(var(--primary) / 0.3), transparent),
+            radial-gradient(1px 1px at 85% 35%, hsl(var(--primary) / 0.25), transparent),
+            radial-gradient(2px 2px at 92% 78%, hsl(var(--primary) / 0.3), transparent),
+            radial-gradient(2px 2px at 28% 12%, hsl(var(--primary) / 0.33), transparent),
+            radial-gradient(1px 1px at 42% 92%, hsl(var(--primary) / 0.27), transparent),
+            radial-gradient(2px 2px at 65% 22%, hsl(var(--primary) / 0.31), transparent),
+            radial-gradient(3px 3px at 8% 68%, hsl(var(--primary) / 0.36), transparent),
+            radial-gradient(1px 1px at 95% 15%, hsl(var(--primary) / 0.24), transparent),
+            radial-gradient(2px 2px at 18% 58%, hsl(var(--primary) / 0.29), transparent),
+            radial-gradient(2px 2px at 48% 38%, hsl(var(--primary) / 0.32), transparent),
+            radial-gradient(1px 1px at 72% 82%, hsl(var(--primary) / 0.26), transparent),
+            radial-gradient(2px 2px at 35% 5%, hsl(var(--primary) / 0.34), transparent);
           background-size: 200% 200%;
           background-position: 0% 0%;
           animation: stars-twinkle 60s ease-in-out infinite;
