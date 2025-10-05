@@ -38,12 +38,15 @@ Preferred communication style: Simple, everyday language.
 - Custom hooks for reusable logic (e.g., `use-mobile`, `use-toast`)
 
 **Key Features:**
-- Animated hero section with rotating taglines
-- Smooth scroll navigation between sections
-- Responsive navigation bar with theme toggle
-- Interactive skills display with animated scrolling badges
-- Professional experience cards with hover effects
-- Contact section with external links
+- Animated hero section with rotating taglines (2.5s interval) and gradient backdrop on profile photo
+- About Me section with personal narrative and hobbies (3 content versions available)
+- Quantified achievements ticker with greyscale styling
+- Smooth scroll navigation with full-page snap and bidirectional animations
+- Responsive navigation bar with mobile hamburger menu and theme toggle
+- Interactive skills display with animated scrolling badges (pause on hover)
+- Professional experience cards with refined spacing, shadows, and keyword highlighting
+- Horizontal scrolling certifications carousel
+- Contact section with location, email, LinkedIn, and phone information
 
 ### Backend Architecture
 
@@ -109,5 +112,30 @@ Preferred communication style: Simple, everyday language.
 - **nanoid** - Unique ID generation
 
 **Assets:**
-- Profile image stored in `attached_assets/generated_images/`
+- Profile image: `attached_assets/Screenshot 2025-10-05 223555_1759684246509.jpg`
 - Static assets resolved via Vite alias `@assets`
+
+## Recent Updates (October 2025)
+
+### Enhancements Implemented:
+1. **Tagline Animation** - Slowed rotation from 0.5s to 2.5s for better readability
+2. **About Me Section** - Added personal narrative with hobbies (F1, web design, badminton, table tennis)
+   - Three content versions available in component (one active, two commented)
+3. **Achievements Ticker** - Quantified metrics displayed in greyscale with prominent numbers:
+   - 3+ Years Experience
+   - 20+ Financial Models Prepared
+   - 3+ Transactions Facilitated
+   - 30+ Pitch Decks Prepared
+   - 20+ Interactive Dashboards Built
+4. **Mobile Navigation** - Responsive hamburger menu for tablets and phones
+5. **Profile Photo Enhancement** - Gradient backdrop (primary color) behind photo for visual depth
+6. **Card Refinements** - Improved spacing and subtle shadows on experience cards
+7. **Section Title Consistency** - All section headings standardized to 4xl/5xl/6xl for prominence
+
+### Page Structure:
+- Hero Section (profile photo with gradient, rotating tagline)
+- About Me Section + Achievements Ticker
+- Experience Section (professional summary + company cards)
+- Skills Section (Finance + Tech skill tickers)
+- Certifications Section (horizontal scrolling cards)
+- Contact Section (location, email, LinkedIn, phone)
