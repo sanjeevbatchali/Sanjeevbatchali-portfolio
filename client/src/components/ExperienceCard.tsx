@@ -8,6 +8,39 @@ interface ExperienceCardProps {
   achievements: string[];
 }
 
+const HighlightedText = ({ text }: { text: string }) => {
+  const highlights = [
+    'CIRP',
+    '70%',
+    'INR 9,000 Cr',
+    '30% reduction',
+    'INR 400 Cr',
+    'Power BI',
+    'Alteryx',
+    'Excel',
+    'bid strategy',
+    'task automation',
+    'financial models',
+    'renewable energy',
+    'fund-raise',
+    'project finance',
+    'strategic consulting',
+    'automated dashboards',
+    'traffic forecasting',
+    'variance analysis',
+    'investor pitch decks',
+    'market research'
+  ];
+
+  let result = text;
+  highlights.forEach(keyword => {
+    const regex = new RegExp(`\\b(${keyword})\\b`, 'gi');
+    result = result.replace(regex, '<strong class="font-semibold text-primary">$1</strong>');
+  });
+
+  return <span dangerouslySetInnerHTML={{ __html: result }} />;
+};
+
 export default function ExperienceCard({ company, position, period, achievements }: ExperienceCardProps) {
   return (
     <Card className="p-6 md:p-8 hover-elevate" data-testid={`card-experience-${company.toLowerCase().replace(/\s+/g, '-')}`}>
@@ -25,7 +58,9 @@ export default function ExperienceCard({ company, position, period, achievements
         {achievements.map((achievement, index) => (
           <li key={index} className="flex gap-3 text-sm md:text-base" data-testid={`text-achievement-${index}`}>
             <span className="text-primary mt-1.5 flex-shrink-0">•</span>
-            <span className="text-foreground/90 leading-relaxed">{achievement}</span>
+            <span className="text-foreground/90 leading-relaxed">
+              <HighlightedText text={achievement} />
+            </span>
           </li>
         ))}
       </ul>

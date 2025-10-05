@@ -1,5 +1,37 @@
 import ExperienceCard from './ExperienceCard';
 
+const HighlightedText = ({ text }: { text: string }) => {
+  const highlights = [
+    'transaction advisory',
+    'debt restructuring',
+    'special situations',
+    'CIRP',
+    'financial modeling',
+    'fundraising',
+    'M&A',
+    'operational turnarounds',
+    'bidding efficiency',
+    'business development',
+    'investor relations',
+    'data-driven insights',
+    '70%',
+    'INR 9,000 Cr',
+    '30% reduction',
+    'INR 400 Cr',
+    'Power BI',
+    'Alteryx',
+    'Excel'
+  ];
+
+  let result = text;
+  highlights.forEach(keyword => {
+    const regex = new RegExp(`\\b(${keyword})\\b`, 'gi');
+    result = result.replace(regex, '<strong class="font-semibold text-primary">$1</strong>');
+  });
+
+  return <span dangerouslySetInnerHTML={{ __html: result }} />;
+};
+
 export default function ExperienceSection() {
   const professionalSummary = "Finance professional with expertise in transaction advisory, debt restructuring, and special situations across diverse sectors including renewable energy, infrastructure, EPC, and pharmaceuticals. Experienced in CIRP bid strategy, financial modeling for large-scale projects, and executing fundraising and M&A transactions. Demonstrated success in driving operational turnarounds, enhancing bidding efficiency, and negotiating acquisitions. Strong background in business development, investor relations, and leading teams to deliver data-driven insights through advanced dashboards and market research.";
 
@@ -38,7 +70,7 @@ export default function ExperienceSection() {
         <div className="mb-12 md:mb-16">
           <h3 className="font-semibold text-lg md:text-xl mb-4 text-muted-foreground">Professional Summary</h3>
           <p className="text-base md:text-lg leading-relaxed" data-testid="text-summary">
-            {professionalSummary}
+            <HighlightedText text={professionalSummary} />
           </p>
         </div>
 

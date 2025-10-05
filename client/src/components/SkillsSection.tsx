@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { SiPython, SiMysql } from 'react-icons/si';
 import { Database, BarChart3, Workflow, Box } from 'lucide-react';
 
@@ -31,9 +30,6 @@ const techSkills: TechSkill[] = [
 ];
 
 export default function SkillsSection() {
-  const [isPausedFinance, setIsPausedFinance] = useState(false);
-  const [isPausedTech, setIsPausedTech] = useState(false);
-
   return (
     <section className="min-h-screen py-16 md:py-24 px-6 md:px-12 flex items-center justify-center" id="skills">
       <div className="max-w-6xl mx-auto w-full">
@@ -46,11 +42,9 @@ export default function SkillsSection() {
             <h3 className="font-accent font-semibold text-2xl md:text-3xl mb-6 text-center" data-testid="text-finance-skills-title">
               Finance Skills
             </h3>
-            <div className="relative overflow-hidden">
+            <div className="relative overflow-hidden group-finance">
               <div 
-                className={`flex gap-4 ${!isPausedFinance ? 'animate-scroll-finance' : ''}`}
-                onMouseEnter={() => setIsPausedFinance(true)}
-                onMouseLeave={() => setIsPausedFinance(false)}
+                className="flex gap-4 animate-scroll-finance"
               >
                 {[...financeSkills, ...financeSkills, ...financeSkills].map((skill, index) => (
                   <div
@@ -71,11 +65,9 @@ export default function SkillsSection() {
             <h3 className="font-accent font-semibold text-2xl md:text-3xl mb-6 text-center" data-testid="text-tech-skills-title">
               Tech Skills
             </h3>
-            <div className="relative overflow-hidden">
+            <div className="relative overflow-hidden group-tech">
               <div 
-                className={`flex gap-6 ${!isPausedTech ? 'animate-scroll-tech' : ''}`}
-                onMouseEnter={() => setIsPausedTech(true)}
-                onMouseLeave={() => setIsPausedTech(false)}
+                className="flex gap-6 animate-scroll-tech"
               >
                 {[...techSkills, ...techSkills, ...techSkills].map((skill, index) => {
                   const Icon = skill.icon;
@@ -138,6 +130,11 @@ export default function SkillsSection() {
           
           .animate-scroll-tech {
             animation: scroll-tech 20s linear infinite;
+          }
+
+          .group-finance:hover .animate-scroll-finance,
+          .group-tech:hover .animate-scroll-tech {
+            animation-play-state: paused;
           }
         `}</style>
       </div>
