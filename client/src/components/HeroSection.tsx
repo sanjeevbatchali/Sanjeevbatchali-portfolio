@@ -23,9 +23,26 @@ export default function HeroSection() {
     <section className="min-h-screen flex items-center justify-center px-6 md:px-12">
       <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-center">
         <div className="lg:col-span-3 text-center lg:text-left">
-          <h1 className="font-accent font-bold text-4xl md:text-5xl lg:text-6xl mb-6" data-testid="text-hero-name">
-            I am <span className="text-primary">Sanjeev Batchali</span>
-          </h1>
+          <div className="relative inline-block mb-6">
+            <h1 className="font-accent font-bold text-4xl md:text-5xl lg:text-6xl" data-testid="text-hero-name">
+              I am <span className="text-primary">Sanjeev Batchali!</span>
+            </h1>
+            <svg 
+              className="absolute left-0 right-0 -bottom-2 w-full h-4 pointer-events-none" 
+              viewBox="0 0 500 20" 
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M 5 12 Q 25 8, 50 11 T 100 10 Q 150 13, 200 9 T 300 11 Q 350 8, 400 12 T 495 10"
+                stroke="hsl(var(--primary))"
+                strokeWidth="3"
+                fill="none"
+                strokeLinecap="round"
+                opacity="0.7"
+              />
+            </svg>
+          </div>
           <div className="h-16 md:h-20 flex items-center justify-center lg:justify-start">
             <p 
               className="font-medium text-xl md:text-2xl lg:text-3xl text-muted-foreground transition-opacity duration-300"
