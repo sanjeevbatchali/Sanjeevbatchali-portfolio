@@ -9,7 +9,7 @@ import ContactSection from '@/components/ContactSection';
 export default function Home() {
   useEffect(() => {
     const observerOptions = {
-      threshold: 0.2,
+      threshold: 0.3,
       rootMargin: '0px'
     };
 
@@ -17,11 +17,13 @@ export default function Home() {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('section-visible');
+        } else {
+          entry.target.classList.remove('section-visible');
         }
       });
     }, observerOptions);
 
-    const sections = document.querySelectorAll('.scroll-section');
+    const sections = document.querySelectorAll('.scroll-section:not(.section-hero)');
     sections.forEach((section) => observer.observe(section));
 
     return () => observer.disconnect();
