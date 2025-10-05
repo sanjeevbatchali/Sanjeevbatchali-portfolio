@@ -365,44 +365,43 @@
   height: 100vh;
 }
 
-/* Individual scroll sections - slideshow style */
+/* Individual scroll sections */
 .scroll-section {
   scroll-snap-align: start;
   scroll-snap-stop: normal;
   min-height: 100vh;
   opacity: 0;
-  transform: translateX(100%);
-  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), 
-              transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-/* Visible state for sections - slide in from right */
+/* Visible state for sections */
 .scroll-section.section-visible {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateY(0);
 }
 
 /* Hero section immediate visibility */
 .section-hero {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateY(0);
 }
 
-/* Alternative slide direction for variety */
-.section-experience {
-  transform: translateX(-100%);
+/* Staggered animations for different sections */
+.section-experience.section-visible {
+  transition-delay: 0.1s;
 }
 
-.section-skills {
-  transform: translateX(100%);
+.section-skills.section-visible {
+  transition-delay: 0.15s;
 }
 
-.section-certifications {
-  transform: translateX(-100%);
+.section-certifications.section-visible {
+  transition-delay: 0.2s;
 }
 
-.section-contact {
-  transform: translateX(100%);
+.section-contact.section-visible {
+  transition-delay: 0.25s;
 }
 
 /* Smooth scrollbar styling */
