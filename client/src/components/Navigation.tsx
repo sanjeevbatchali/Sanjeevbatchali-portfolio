@@ -31,28 +31,41 @@ export default function Navigation() {
   }, []);
 
   useEffect(() => {
-    const observerOptions = {
-      threshold: 0.5,
-      rootMargin: '-80px 0px -50% 0px'
+    let ticking = false;
+
+    const updateActiveSection = () => {
+      const scrollPosition = window.scrollY + 100;
+      
+      let currentSection = 'hero';
+      
+      for (const section of sections) {
+        const element = document.getElementById(section.id);
+        if (element) {
+          const offsetTop = element.offsetTop;
+          const offsetHeight = element.offsetHeight;
+          
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            currentSection = section.id;
+            break;
+          }
+        }
+      }
+      
+      setActiveSection(currentSection);
+      ticking = false;
     };
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const sectionId = entry.target.id;
-          setActiveSection(sectionId);
-        }
-      });
-    }, observerOptions);
-
-    sections.forEach((section) => {
-      const element = document.getElementById(section.id);
-      if (element) {
-        observer.observe(element);
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateActiveSection);
+        ticking = true;
       }
-    });
+    };
 
-    return () => observer.disconnect();
+    updateActiveSection();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const scrollToSection = (sectionId: string) => {
