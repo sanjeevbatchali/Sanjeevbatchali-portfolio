@@ -120,7 +120,7 @@ export default function SkillsSection() {
           }
           
           .animate-scroll-finance {
-            animation: scroll-finance 15s linear infinite;
+            animation: scroll-finance 8s linear infinite;
           }
           
           .animate-scroll-tech {
