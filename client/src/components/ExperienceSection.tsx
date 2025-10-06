@@ -1,5 +1,5 @@
 import ExperienceCard from './ExperienceCard';
-import { Pill, HardHat, Utensils, Laptop } from 'lucide-react';
+import { Pill, HardHat, Utensils, Laptop, Zap, Fuel } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 
 const HighlightedText = ({ text }: { text: string }) => {
@@ -38,8 +38,10 @@ export default function ExperienceSection() {
   const professionalSummary = "Finance professional with expertise in transaction advisory, debt restructuring, and special situations. Experienced in CIRP strategy, financial modeling, M&A execution, operational turnarounds, and delivering data-driven insights.";
 
   const industries = [
-    { name: 'Pharma', icon: Pill },
     { name: 'Infra and EPC', icon: HardHat },
+    { name: 'Renewable Energy', icon: Zap },
+    { name: 'Non-Renewable Energy', icon: Fuel },
+    { name: 'Pharma', icon: Pill },
     { name: 'F&B', icon: Utensils },
     { name: 'IT&ITES', icon: Laptop }
   ];
@@ -105,6 +107,8 @@ export default function ExperienceSection() {
             </div>
           </div>
         </div>
+
+        <h3 className="font-semibold text-lg md:text-xl mb-6 text-muted-foreground">Work Experience</h3>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
           {experiences.map((exp, index) => (
