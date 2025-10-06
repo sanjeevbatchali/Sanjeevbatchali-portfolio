@@ -1,0 +1,11 @@
+Sanjeevbatchali-portfolio/:1 Unchecked runtime.lastError: The message port closed before a response was received.
+
+content.js:54 Refused to execute inline script because it violates the following Content Security Policy directive: "script-src 'self' 'wasm-unsafe-eval' 'inline-speculation-rules' chrome-extension://2bddbda4-11ab-442d-9eb1-e552d98715cd/". Either the 'unsafe-inline' keyword, a hash ('sha256-lw7PbM0UWug7v7LViGDHpinLe14drDiBRCIEoIkOlow='), or a nonce ('nonce-...') is required to enable inline execution.
+content.js:1 CISPL SignerDigital Loaded
+inject.bundle.js:243 [ChromePolyfill] Chrome API support enabled for web context
+Sanjeevbatchali-portfolio/:1 Refused to load the font 'data:font/woff;base64,d09GRgABAAAAAOQYAAsAAAABxiAAAQAAAAAAAAAAAAAAAAAAAAAAA…9byKFROfeNhs/gpsOsSC082VzEfS+U/cxa9h1IdaGzOKotqG0PJ7CsrGScVg60nh058hdYkV+/' because it violates the following Content Security Policy directive: "default-src 'none'". Note that 'font-src' was not explicitly set, so 'default-src' is used as a fallback.
+Sanjeevbatchali-portfolio/:1 Refused to load the font 'data:font/woff;base64,d09GRgABAAAAAOQYAAsAAAABxiAAAQAAAAAAAAAAAAAAAAAAAAAAA…9byKFROfeNhs/gpsOsSC082VzEfS+U/cxa9h1IdaGzOKotqG0PJ7CsrGScVg60nh058hdYkV+/' because it violates the following Content Security Policy directive: "default-src 'none'". Note that 'font-src' was not explicitly set, so 'default-src' is used as a fallback.
+Sanjeevbatchali-portfolio/:1 Refused to load the font 'data:font/woff2;base64,d09GMgABAAAAALd4AAsAAAABxiAAALcnAAEAAAAAAAAAAAAAAAAA…Kw5g6D3l/t5juXHAy0dLJNmvu7ok8viqPyypRgXJn2L9r5+GDKu1V8dS9Et/3+eHlSjuLltP8G' because it violates the following Content Security Policy directive: "default-src 'none'". Note that 'font-src' was not explicitly set, so 'default-src' is used as a fallback.
+Sanjeevbatchali-portfolio/:1 Refused to load the font 'data:font/woff2;base64,d09GMgABAAAAALd4AAsAAAABxiAAALcnAAEAAAAAAAAAAAAAAAAA…Kw5g6D3l/t5juXHAy0dLJNmvu7ok8viqPyypRgXJn2L9r5+GDKu1V8dS9Et/3+eHlSjuLltP8G' because it violates the following Content Security Policy directive: "default-src 'none'". Note that 'font-src' was not explicitly set, so 'default-src' is used as a fallback.
+Sanjeevbatchali-portfolio/:1 Unchecked runtime.lastError: The message port closed before a response was received.
+
