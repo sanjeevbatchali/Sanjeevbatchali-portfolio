@@ -1,4 +1,6 @@
 import ExperienceCard from './ExperienceCard';
+import { Pill, HardHat, Utensils, Laptop } from 'lucide-react';
+import { Card } from '@/components/ui/card';
 
 const HighlightedText = ({ text }: { text: string }) => {
   const highlights = [
@@ -33,7 +35,14 @@ const HighlightedText = ({ text }: { text: string }) => {
 };
 
 export default function ExperienceSection() {
-  const professionalSummary = "Finance professional with expertise in transaction advisory, debt restructuring, and special situations across diverse sectors including renewable energy, infrastructure, EPC, and pharmaceuticals. Experienced in CIRP bid strategy, financial modeling for large-scale projects, and executing fundraising and M&A transactions. Demonstrated success in driving operational turnarounds, enhancing bidding efficiency, and negotiating acquisitions. Strong background in business development, investor relations, and leading teams to deliver data-driven insights through advanced dashboards and market research.";
+  const professionalSummary = "Finance professional with expertise in transaction advisory, debt restructuring, and special situations. Experienced in CIRP strategy, financial modeling, M&A execution, operational turnarounds, and delivering data-driven insights.";
+
+  const industries = [
+    { name: 'Pharma', icon: Pill },
+    { name: 'Infra and EPC', icon: HardHat },
+    { name: 'F&B', icon: Utensils },
+    { name: 'IT&ITES', icon: Laptop }
+  ];
 
   const experiences = [
     {
@@ -67,11 +76,34 @@ export default function ExperienceSection() {
           Experience
         </h2>
         
-        <div className="mb-12 md:mb-16">
-          <h3 className="font-semibold text-lg md:text-xl mb-4 text-muted-foreground">Professional Summary</h3>
-          <p className="text-base md:text-lg leading-relaxed" data-testid="text-summary">
-            <HighlightedText text={professionalSummary} />
-          </p>
+        <div className="mb-12 md:mb-16 space-y-8">
+          <div>
+            <h3 className="font-semibold text-lg md:text-xl mb-4 text-muted-foreground">Professional Summary</h3>
+            <p className="text-base md:text-lg leading-relaxed" data-testid="text-summary">
+              <HighlightedText text={professionalSummary} />
+            </p>
+          </div>
+
+          <div>
+            <h3 className="font-semibold text-lg md:text-xl mb-4 text-muted-foreground">Industry Exposure</h3>
+            <div className="flex flex-wrap gap-4">
+              {industries.map((industry, index) => {
+                const Icon = industry.icon;
+                return (
+                  <Card 
+                    key={index} 
+                    className="flex items-center gap-3 px-4 py-3 hover-elevate"
+                    data-testid={`card-industry-${index}`}
+                  >
+                    <Icon className="w-5 h-5 text-muted-foreground grayscale opacity-60" />
+                    <span className="font-medium text-base" data-testid="text-industry-name">
+                      {industry.name}
+                    </span>
+                  </Card>
+                );
+              })}
+            </div>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
