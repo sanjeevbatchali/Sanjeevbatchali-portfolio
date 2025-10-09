@@ -1,21 +1,23 @@
 import { useState, useEffect } from 'react';
 import { Moon, Sun, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link, useLocation } from 'wouter';
 
 const sections = [
   { id: 'hero', label: 'Home' },
   { id: 'about', label: 'About' },
   { id: 'experience', label: 'Experience' },
   { id: 'skills', label: 'Skills' },
-  { id: 'certifications', label: 'Certifications' },
-  { id: 'contact', label: 'Contact' }
+  { id: 'certifications', label: 'Certifications' }
 ];
 
 export default function Navigation() {
+  const [location] = useLocation();
   const [activeSection, setActiveSection] = useState('hero');
   const [isDark, setIsDark] = useState(true);
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const isHome = location === '/';
 
   useEffect(() => {
     document.documentElement.classList.add('dark');
@@ -86,7 +88,7 @@ export default function Navigation() {
               key={section.id}
               onClick={() => scrollToSection(section.id)}
               className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
-                activeSection === section.id
+                activeSection === section.id && isHome
                   ? 'bg-primary text-primary-foreground'
                   : 'hover-elevate'
               }`}
@@ -95,6 +97,18 @@ export default function Navigation() {
               {section.label}
             </button>
           ))}
+          <Link href="/blog">
+            <button
+              className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                location.startsWith('/blog')
+                  ? 'bg-primary text-primary-foreground'
+                  : 'hover-elevate'
+              }`}
+              data-testid="button-nav-blog"
+            >
+              Blog
+            </button>
+          </Link>
         </div>
 
         <div className="flex items-center gap-2">
@@ -130,7 +144,7 @@ export default function Navigation() {
                 key={section.id}
                 onClick={() => scrollToSection(section.id)}
                 className={`px-4 py-3 rounded-md text-left font-medium transition-colors ${
-                  activeSection === section.id
+                  activeSection === section.id && isHome
                     ? 'bg-primary text-primary-foreground'
                     : 'hover-elevate'
                 }`}
@@ -139,6 +153,19 @@ export default function Navigation() {
                 {section.label}
               </button>
             ))}
+            <Link href="/blog">
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className={`px-4 py-3 rounded-md text-left font-medium transition-colors w-full ${
+                  location.startsWith('/blog')
+                    ? 'bg-primary text-primary-foreground'
+                    : 'hover-elevate'
+                }`}
+                data-testid="button-mobile-nav-blog"
+              >
+                Blog
+              </button>
+            </Link>
           </div>
         </div>
       )}
