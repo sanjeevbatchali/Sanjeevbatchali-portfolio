@@ -37,8 +37,20 @@ export default function BlogPost() {
     <div className="min-h-screen">
       <Navigation />
       
+      {/* Hero Image */}
+      <div className="pt-20 pb-0">
+        <div className="w-full h-[300px] md:h-[400px] lg:h-[500px] overflow-hidden">
+          <img 
+            src={post.imageUrl} 
+            alt={post.title}
+            className="w-full h-full object-cover"
+            data-testid="img-post-hero"
+          />
+        </div>
+      </div>
+      
       {/* Back Button */}
-      <section className="pt-24 pb-8 px-6 md:px-12">
+      <section className="pt-8 pb-8 px-6 md:px-12">
         <div className="max-w-4xl mx-auto">
           <Link href="/blog">
             <Button variant="ghost" className="gap-2" data-testid="button-back-to-blog">
