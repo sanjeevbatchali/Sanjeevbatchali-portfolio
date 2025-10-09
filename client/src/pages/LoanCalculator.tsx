@@ -287,6 +287,7 @@ export default function LoanCalculator() {
 
     const moratoriumPeriods = Math.ceil(morat / (12 / paymentsPerYear));
     const adjustedTotalPayments = totalPayments + moratoriumPeriods;
+    let balloonPaymentRecalculated = false;
 
     for (let i = 1; i <= adjustedTotalPayments; i++) {
       if (freq === "Monthly") paymentDate.setMonth(paymentDate.getMonth() + 1);
@@ -308,8 +309,18 @@ export default function LoanCalculator() {
           balance += interest;
         }
       } else {
+        if (type === "Balloon" && moratoriumPeriods > 0 && !balloonPaymentRecalculated) {
+          emi = balance * 0.02;
+          payment = emi;
+          balloonPaymentRecalculated = true;
+        }
+        
         if (type === "EMI") {
           principal = payment - interest;
+          if (principal > balance) {
+            principal = balance;
+            payment = principal + interest;
+          }
         } else if (type === "InterestOnly") {
           principal = (i === adjustedTotalPayments) ? balance : 0;
           payment = (i === adjustedTotalPayments) ? (balance + interest) : interest;
