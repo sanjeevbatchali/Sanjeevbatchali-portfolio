@@ -59,6 +59,13 @@ export default function Navigation() {
 
   const scrollToSection = (sectionId: string) => {
     setMobileMenuOpen(false);
+    
+    // If we're not on the home page, navigate to home first
+    if (!isHome) {
+      window.location.href = `/#${sectionId}`;
+      return;
+    }
+    
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });

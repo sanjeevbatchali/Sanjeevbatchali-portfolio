@@ -20,11 +20,17 @@ export default function BlogPost() {
   const shareText = `Check out: ${post.title}`;
 
   const shareOnLinkedIn = () => {
-    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`, '_blank');
+    const newWindow = window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`, '_blank');
+    if (newWindow) {
+      newWindow.opener = null;
+    }
   };
 
   const shareOnTwitter = () => {
-    window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`, '_blank');
+    const newWindow = window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`, '_blank');
+    if (newWindow) {
+      newWindow.opener = null;
+    }
   };
 
   return (
