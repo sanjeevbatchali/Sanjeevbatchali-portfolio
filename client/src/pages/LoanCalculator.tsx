@@ -411,13 +411,18 @@ export default function LoanCalculator() {
   };
 
   const chartData = {
-    labels: ['Principal', 'Interest', 'Fees'],
+    labels: ['Principal', 'Interest', 'Other Costs'],
     datasets: [{
       data: [totalPrincipal, totalInterest, totalFees],
       backgroundColor: [
-        'hsl(var(--primary))',
-        'hsl(var(--chart-2))',
-        'hsl(var(--chart-4))'
+        'rgb(59, 130, 246)',
+        'rgb(96, 165, 250)',
+        'rgb(147, 197, 253)'
+      ],
+      hoverBackgroundColor: [
+        'rgb(37, 99, 235)',
+        'rgb(59, 130, 246)',
+        'rgb(96, 165, 250)'
       ],
       borderWidth: 0
     }]
