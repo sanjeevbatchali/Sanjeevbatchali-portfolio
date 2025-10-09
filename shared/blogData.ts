@@ -8,6 +8,7 @@ export interface BlogPost {
   date: string;
   readTime: number;
   author: string;
+  imageUrl: string;
 }
 
 export const blogPosts: BlogPost[] = [
@@ -16,6 +17,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'what-markets-told-trump-bond-yields-basis-trades',
     title: 'What the Markets Told Trump: How Bond Yields and Basis Trades Derailed a Tariff Plan',
     excerpt: 'When the S&P 500 plunged nearly 20% post tariff announcement, the headlines focused on investor panic. But the sharp move in the 10-Year US Treasury yield told a different story.',
+    imageUrl: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&auto=format&fit=crop',
     content: `
 # What the Markets Told Trump: How Bond Yields and Basis Trades Derailed a Tariff Plan
 
@@ -75,6 +77,7 @@ Moving further, it would be a very interesting 90 Days, where we certainly get t
     slug: 'ai-ml-reshaping-corporate-restructuring-india',
     title: 'AI & ML: Reshaping Corporate Restructuring in India – Lessons from Global Best Practices',
     excerpt: 'Corporate restructuring has always been a balancing act. For India, where stressed assets surged after the pandemic, AI and ML are emerging as powerful allies in accelerating resolutions.',
+    imageUrl: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&auto=format&fit=crop',
     content: `
 # AI & ML: Reshaping Corporate Restructuring in India – Lessons from Global Best Practices
 
