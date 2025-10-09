@@ -139,6 +139,7 @@ Preferred communication style: Simple, everyday language.
 - About Me Section + Achievements Ticker
 - Experience Section (professional summary + company cards)
 - Skills Section (Finance + Tech skill tickers)
+- Certifications Section (horizontal scrolling certifications carousel)
 - Contact Section (location, email, LinkedIn, phone)
 
 **DevTools Section:**
@@ -205,7 +206,7 @@ Preferred communication style: Simple, everyday language.
    - Optimized assets and bundles
 
 #### DevTools Implementation (October 9, 2025):
-1. **Navigation Update** - Removed Certifications section, added DevTools button to main navigation
+1. **Navigation Update** - Removed Certifications link from navigation bar, added DevTools button to main navigation
 2. **DevTools Landing Page** - Created tool showcase page at /devtools:
    - Hero section with "Developer Tools" title
    - Grid layout for tool cards with hover effects
@@ -223,7 +224,7 @@ Preferred communication style: Simple, everyday language.
    - Indian and International number formatting
    - Responsive 3-column layout (inputs, summary, schedule)
 4. **Dependencies Added** - Installed xlsx, chart.js, react-chartjs-2 for calculator functionality
-5. **Home Page Update** - Removed Certifications section from homepage structure
+5. **Home Page Structure** - Certifications section remains on homepage between Skills and Contact sections
 6. **Testing** - Verified end-to-end functionality through Playwright tests
 7. **Production Build** - Updated dist/public folder (823KB) with DevTools section
 8. **Moratorium Fix** - Corrected interest capitalization logic in loan calculator:
