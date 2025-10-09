@@ -159,6 +159,12 @@ Preferred communication style: Simple, everyday language.
 
 ### Recent Updates (October 2025)
 
+#### Performance & Visual Enhancements (October 9, 2025):
+1. **Scrolling Performance** - Changed scroll-snap-type from "mandatory" to "proximity" to eliminate lag while maintaining section alignment
+2. **Background Enhancement** - Increased star count from ~50 to ~100 for richer cosmic background effect
+3. **Testing** - Verified smooth scrolling and visual improvements through e2e playwright tests
+4. **Production Build** - Updated dist/public folder (568KB) with performance optimizations
+
 #### Blog Implementation (October 9, 2025):
 1. **Navigation Update** - Replaced "Contact" with "Blog" in main navigation
 2. **Real LinkedIn Articles** - Updated blog with 2 real published articles:
