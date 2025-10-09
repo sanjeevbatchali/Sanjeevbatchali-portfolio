@@ -7,8 +7,7 @@ const sections = [
   { id: 'hero', label: 'Home' },
   { id: 'about', label: 'About' },
   { id: 'experience', label: 'Experience' },
-  { id: 'skills', label: 'Skills' },
-  { id: 'certifications', label: 'Certifications' }
+  { id: 'skills', label: 'Skills' }
 ];
 
 export default function Navigation() {
@@ -104,6 +103,18 @@ export default function Navigation() {
               {section.label}
             </button>
           ))}
+          <Link href="/devtools">
+            <button
+              className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                location.startsWith('/devtools')
+                  ? 'bg-primary text-primary-foreground'
+                  : 'hover-elevate'
+              }`}
+              data-testid="button-nav-devtools"
+            >
+              DevTools
+            </button>
+          </Link>
           <Link href="/blog">
             <button
               className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
@@ -160,6 +171,19 @@ export default function Navigation() {
                 {section.label}
               </button>
             ))}
+            <Link href="/devtools">
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className={`px-4 py-3 rounded-md text-left font-medium transition-colors w-full ${
+                  location.startsWith('/devtools')
+                    ? 'bg-primary text-primary-foreground'
+                    : 'hover-elevate'
+                }`}
+                data-testid="button-mobile-nav-devtools"
+              >
+                DevTools
+              </button>
+            </Link>
             <Link href="/blog">
               <button
                 onClick={() => setMobileMenuOpen(false)}
