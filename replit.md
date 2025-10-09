@@ -161,12 +161,15 @@ Preferred communication style: Simple, everyday language.
 
 #### Blog Implementation (October 9, 2025):
 1. **Navigation Update** - Replaced "Contact" with "Blog" in main navigation
-2. **Blog Data** - Created 4 sample posts covering:
-   - Debt Restructuring strategies
-   - Financial Modeling best practices
-   - IPO Process navigation
-   - Career Advice for finance professionals
+2. **Real LinkedIn Articles** - Updated blog with 2 real published articles:
+   - "What the Markets Told Trump: How Bond Yields and Basis Trades Derailed a Tariff Plan" (April 2025)
+   - "AI & ML: Reshaping Corporate Restructuring in India – Lessons from Global Best Practices" (September 2025)
 3. **Blog Pages** - Built listing and detail pages with matching portfolio design
 4. **Cross-Page Navigation** - Implemented hash-based navigation from blog back to home sections
 5. **Security** - Added opener protection to share buttons (prevents reverse tabnabbing)
 6. **Contact Accessibility** - Contact section now appears in blog page footers
+7. **Production Build** - Created deployment-ready dist/public folder (564KB) with:
+   - Favicon (SB branding)
+   - CSP headers via _headers file
+   - Netlify routing via netlify.toml
+   - Optimized assets and bundles
