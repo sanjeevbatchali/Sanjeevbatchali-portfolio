@@ -103,18 +103,6 @@ export default function Navigation() {
               {section.label}
             </button>
           ))}
-          <Link href="/devtools">
-            <button
-              className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
-                location.startsWith('/devtools')
-                  ? 'bg-primary text-primary-foreground'
-                  : 'hover-elevate'
-              }`}
-              data-testid="button-nav-devtools"
-            >
-              DevTools
-            </button>
-          </Link>
           <Link href="/blog">
             <button
               className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
@@ -125,6 +113,18 @@ export default function Navigation() {
               data-testid="button-nav-blog"
             >
               Blog
+            </button>
+          </Link>
+          <Link href="/devtools">
+            <button
+              className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                location.startsWith('/devtools')
+                  ? 'bg-primary text-primary-foreground'
+                  : 'hover-elevate'
+              }`}
+              data-testid="button-nav-devtools"
+            >
+              DevTools
             </button>
           </Link>
         </div>
@@ -171,19 +171,6 @@ export default function Navigation() {
                 {section.label}
               </button>
             ))}
-            <Link href="/devtools">
-              <button
-                onClick={() => setMobileMenuOpen(false)}
-                className={`px-4 py-3 rounded-md text-left font-medium transition-colors w-full ${
-                  location.startsWith('/devtools')
-                    ? 'bg-primary text-primary-foreground'
-                    : 'hover-elevate'
-                }`}
-                data-testid="button-mobile-nav-devtools"
-              >
-                DevTools
-              </button>
-            </Link>
             <Link href="/blog">
               <button
                 onClick={() => setMobileMenuOpen(false)}
@@ -195,6 +182,19 @@ export default function Navigation() {
                 data-testid="button-mobile-nav-blog"
               >
                 Blog
+              </button>
+            </Link>
+            <Link href="/devtools">
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className={`px-4 py-3 rounded-md text-left font-medium transition-colors w-full ${
+                  location.startsWith('/devtools')
+                    ? 'bg-primary text-primary-foreground'
+                    : 'hover-elevate'
+                }`}
+                data-testid="button-mobile-nav-devtools"
+              >
+                DevTools
               </button>
             </Link>
           </div>
