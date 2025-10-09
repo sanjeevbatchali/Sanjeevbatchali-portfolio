@@ -45,7 +45,15 @@ export default function Blog() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {blogPosts.map(post => (
               <Link key={post.id} href={`/blog/${post.slug}`}>
-                <Card className="h-full hover-elevate transition-all duration-300" data-testid={`card-blog-${post.slug}`}>
+                <Card className="h-full hover-elevate transition-all duration-300 overflow-hidden" data-testid={`card-blog-${post.slug}`}>
+                  <div className="w-full h-48 overflow-hidden">
+                    <img 
+                      src={post.imageUrl} 
+                      alt={post.title}
+                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                      data-testid={`img-post-thumbnail-${post.slug}`}
+                    />
+                  </div>
                   <CardHeader>
                     <div className="flex items-center gap-2 mb-3">
                       <Badge variant="secondary" data-testid={`badge-post-category-${post.slug}`}>
