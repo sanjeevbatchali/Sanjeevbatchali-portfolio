@@ -139,8 +139,26 @@ Preferred communication style: Simple, everyday language.
 - About Me Section + Achievements Ticker
 - Experience Section (professional summary + company cards)
 - Skills Section (Finance + Tech skill tickers)
-- Certifications Section (horizontal scrolling cards)
 - Contact Section (location, email, LinkedIn, phone)
+
+**DevTools Section:**
+- DevTools Landing Page (/devtools):
+  - Hero section with title and subtitle
+  - Grid of tool cards with icons, descriptions, and tags
+  - Interactive hover effects with arrow animations
+  - Contact section footer
+- Loan Amortization Calculator (/devtools/loan-calculator):
+  - Professional calculator interface with form inputs and results display
+  - Supports multiple repayment types: EMI, Interest-only, Balloon payments
+  - Configurable repayment frequencies: Monthly, Quarterly, Half-yearly, Annually
+  - Moratorium period support with flexible tenure input (years, months)
+  - Fee calculations: Processing fee, Professional fee, Other costs
+  - Advanced outputs: Total Principal, Total Interest, Total Fees, Effective Interest Rate (XIRR)
+  - Visual pie chart breakdown using Chart.js
+  - Detailed amortization schedule table with payment-by-payment breakdown
+  - Excel export functionality using XLSX library
+  - Indian and International number formatting options
+  - Responsive 3-column layout (form, summary, schedule)
 
 **Blog Section:**
 - Blog Listing Page (/blog):
@@ -185,3 +203,26 @@ Preferred communication style: Simple, everyday language.
    - CSP headers via _headers file (includes img-src for Unsplash CDN)
    - Netlify routing via netlify.toml
    - Optimized assets and bundles
+
+#### DevTools Implementation (October 9, 2025):
+1. **Navigation Update** - Removed Certifications section, added DevTools button to main navigation
+2. **DevTools Landing Page** - Created tool showcase page at /devtools:
+   - Hero section with "Developer Tools" title
+   - Grid layout for tool cards with hover effects
+   - Calculator icon and descriptive tags
+   - Professional design matching portfolio aesthetic
+3. **Loan Amortization Calculator** - Built comprehensive financial calculator at /devtools/loan-calculator:
+   - Enhanced React/TypeScript implementation of loan calculator
+   - Complete EMI calculation with three repayment types (EMI, Interest-only, Balloon)
+   - Support for moratorium periods and multiple repayment frequencies
+   - XIRR calculation for effective interest rate
+   - Visual pie chart using Chart.js
+   - Detailed amortization schedule table
+   - Excel export functionality using XLSX library
+   - Form validation with error messages
+   - Indian and International number formatting
+   - Responsive 3-column layout (inputs, summary, schedule)
+4. **Dependencies Added** - Installed xlsx, chart.js, react-chartjs-2 for calculator functionality
+5. **Home Page Update** - Removed Certifications section from homepage structure
+6. **Testing** - Verified end-to-end functionality through Playwright tests
+7. **Production Build** - Updated dist/public folder (823KB) with DevTools section

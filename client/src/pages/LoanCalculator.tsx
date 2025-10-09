@@ -299,13 +299,14 @@ export default function LoanCalculator() {
       let payment = emi;
 
       if (i <= moratoriumPeriods) {
-        payment = 0;
         if (type === "InterestOnly") {
           payment = interest;
+          principal = 0;
         } else {
-          interest = 0;
+          payment = 0;
+          principal = 0;
+          balance += interest;
         }
-        principal = 0;
       } else {
         if (type === "EMI") {
           principal = payment - interest;
