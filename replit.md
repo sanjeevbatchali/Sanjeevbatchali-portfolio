@@ -232,3 +232,8 @@ Preferred communication style: Simple, everyday language.
    - Interest-only loans: Interest paid during moratorium, no capitalization
    - Added safety check to prevent negative balances in EMI calculations
    - XIRR and total interest now correctly reflect capitalized amounts
+9. **Pie Chart Enhancement** - Updated loan breakdown visualization with professional blue color scheme:
+   - Principal: Dark blue (rgb(59, 130, 246)) with darker hover (rgb(37, 99, 235))
+   - Interest: Medium blue (rgb(96, 165, 250)) with darker hover (rgb(59, 130, 246))
+   - Other Costs: Light blue (rgb(147, 197, 253)) with darker hover (rgb(96, 165, 250))
+   - Interactive hover effects darken each segment for better user engagement
