@@ -168,8 +168,14 @@ Preferred communication style: Simple, everyday language.
 4. **Cross-Page Navigation** - Implemented hash-based navigation from blog back to home sections
 5. **Security** - Added opener protection to share buttons (prevents reverse tabnabbing)
 6. **Contact Accessibility** - Contact section now appears in blog page footers
-7. **Production Build** - Created deployment-ready dist/public folder (564KB) with:
+7. **Blog Images** - Added professional images from Unsplash:
+   - Hero images on individual blog post pages (responsive: 300px/400px/500px)
+   - Thumbnail images on blog listing cards (192px height)
+   - Hover zoom effect on thumbnails
+   - Stock market chart for Trump/tariffs article
+   - AI/technology image for ML/restructuring article
+8. **Production Build** - Created deployment-ready dist/public folder (564KB) with:
    - Favicon (SB branding)
-   - CSP headers via _headers file
+   - CSP headers via _headers file (includes img-src for Unsplash CDN)
    - Netlify routing via netlify.toml
    - Optimized assets and bundles
