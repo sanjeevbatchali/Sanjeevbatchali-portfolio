@@ -360,7 +360,7 @@
 /* Smooth scroll container */
 .scroll-container {
   scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: y proximity;
   overflow-y: scroll;
   height: 100vh;
 }
