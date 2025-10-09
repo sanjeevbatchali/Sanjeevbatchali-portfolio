@@ -226,3 +226,9 @@ Preferred communication style: Simple, everyday language.
 5. **Home Page Update** - Removed Certifications section from homepage structure
 6. **Testing** - Verified end-to-end functionality through Playwright tests
 7. **Production Build** - Updated dist/public folder (823KB) with DevTools section
+8. **Moratorium Fix** - Corrected interest capitalization logic in loan calculator:
+   - EMI/Balloon loans: Interest accrues and capitalizes during moratorium (adds to balance)
+   - Balloon loans: Payment recalculated (2% of new balance) after moratorium ends
+   - Interest-only loans: Interest paid during moratorium, no capitalization
+   - Added safety check to prevent negative balances in EMI calculations
+   - XIRR and total interest now correctly reflect capitalized amounts
