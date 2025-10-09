@@ -47,6 +47,7 @@ Preferred communication style: Simple, everyday language.
 - Professional experience cards with refined spacing, shadows, and keyword highlighting
 - Horizontal scrolling certifications carousel
 - Contact section with location, email, LinkedIn, and phone information
+- **Blog section** with finance and career articles (separate pages with consistent design)
 
 ### Backend Architecture
 
@@ -132,9 +133,40 @@ Preferred communication style: Simple, everyday language.
 7. **Section Title Consistency** - All section headings standardized to 4xl/5xl/6xl for prominence
 
 ### Page Structure:
+
+**Home Page (/):**
 - Hero Section (profile photo with gradient, rotating tagline)
 - About Me Section + Achievements Ticker
 - Experience Section (professional summary + company cards)
 - Skills Section (Finance + Tech skill tickers)
 - Certifications Section (horizontal scrolling cards)
 - Contact Section (location, email, LinkedIn, phone)
+
+**Blog Section:**
+- Blog Listing Page (/blog):
+  - Hero section with title and description
+  - Category filters (All Posts, Finance, Career)
+  - Grid of blog post cards with metadata (date, reading time, category)
+  - Contact section footer
+- Blog Post Pages (/blog/:slug):
+  - Back to blog navigation
+  - Post header with category, date, reading time
+  - Share buttons (LinkedIn, Twitter) with security protections
+  - Formatted article content with typography styling
+  - Author bio card
+  - Related posts section
+  - Contact section footer
+
+### Recent Updates (October 2025)
+
+#### Blog Implementation (October 9, 2025):
+1. **Navigation Update** - Replaced "Contact" with "Blog" in main navigation
+2. **Blog Data** - Created 4 sample posts covering:
+   - Debt Restructuring strategies
+   - Financial Modeling best practices
+   - IPO Process navigation
+   - Career Advice for finance professionals
+3. **Blog Pages** - Built listing and detail pages with matching portfolio design
+4. **Cross-Page Navigation** - Implemented hash-based navigation from blog back to home sections
+5. **Security** - Added opener protection to share buttons (prevents reverse tabnabbing)
+6. **Contact Accessibility** - Contact section now appears in blog page footers
