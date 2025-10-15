@@ -43,6 +43,8 @@ export default function BlogPost() {
           <img 
             src={post.imageUrl} 
             alt={post.title}
+            loading="eager"
+            decoding="async"
             className="w-full h-full object-cover"
             data-testid="img-post-hero"
           />

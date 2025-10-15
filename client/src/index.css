@@ -457,8 +457,7 @@
   pointer-events: none;
   z-index: 9999;
   font-size: 24px;
-  transform: translate(-50%, -50%) rotate(0deg);
-  transition: transform 0.1s ease;
+  will-change: transform;
   filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.5));
 }
 
@@ -471,7 +470,7 @@
   border-radius: 50%;
   background: linear-gradient(135deg, #3B82F6, #60A5FA);
   opacity: 0.8;
-  animation: trail-fade 0.6s ease-out forwards;
+  will-change: transform, opacity;
 }
 
 @keyframes trail-fade {

@@ -59,7 +59,9 @@ export default function HeroSection() {
             <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-lg overflow-hidden border-2 border-primary shadow-2xl">
               <img 
                 src={profileImage} 
-                alt="Sanjeev Batchali" 
+                alt="Sanjeev Batchali"
+                loading="eager"
+                decoding="async"
                 className="w-full h-full object-cover"
                 data-testid="img-profile"
               />
