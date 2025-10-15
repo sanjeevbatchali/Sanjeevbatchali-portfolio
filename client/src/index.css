@@ -446,3 +446,53 @@
     transition: none;
   }
 }
+
+/* Rocket Cursor */
+* {
+  cursor: none !important;
+}
+
+.rocket-cursor {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  font-size: 24px;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  transition: transform 0.1s ease;
+  filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.5));
+}
+
+.cursor-trail {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3B82F6, #60A5FA);
+  opacity: 0.8;
+  animation: trail-fade 0.6s ease-out forwards;
+}
+
+@keyframes trail-fade {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+/* Disable rocket cursor for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    cursor: auto !important;
+  }
+  
+  .rocket-cursor,
+  .cursor-trail {
+    display: none;
+  }
+}

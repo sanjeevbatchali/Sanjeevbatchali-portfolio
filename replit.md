@@ -238,3 +238,8 @@ Preferred communication style: Simple, everyday language.
    - Interest: Medium blue (rgb(96, 165, 250)) with darker hover (rgb(59, 130, 246))
    - Other Costs: Light blue (rgb(147, 197, 253)) with darker hover (rgb(96, 165, 250))
    - Interactive hover effects darken each segment for better user engagement
+10. **Custom Rocket Cursor** - Added animated rocket cursor with trailing effect:
+   - Custom rocket emoji (🚀) cursor across entire site
+   - Smooth trailing animation with blue gradient particles
+   - Respects prefers-reduced-motion accessibility setting
+   - Fixed z-index layering for proper rendering
