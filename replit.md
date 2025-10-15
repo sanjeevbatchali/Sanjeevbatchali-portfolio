@@ -241,6 +241,6 @@ Preferred communication style: Simple, everyday language.
 10. **Custom Rocket Cursor** - Added animated rocket cursor with trailing effect:
    - Custom rocket emoji (🚀) cursor across entire site at 0° angle (pointing forward/right)
    - Smooth trailing animation with blue gradient particles
-   - Enhanced smooth movement with gradual follow effect (0.15 interpolation factor)
+   - Fast and responsive movement with smooth follow effect (0.35 interpolation factor)
    - Respects prefers-reduced-motion accessibility setting
    - Fixed z-index layering for proper rendering
