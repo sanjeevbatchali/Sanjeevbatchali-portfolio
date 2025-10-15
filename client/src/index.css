@@ -457,7 +457,7 @@
   pointer-events: none;
   z-index: 9999;
   font-size: 24px;
-  transform: translate(-50%, -50%) rotate(-45deg);
+  transform: translate(-50%, -50%) rotate(135deg);
   transition: transform 0.1s ease;
   filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.5));
 }
