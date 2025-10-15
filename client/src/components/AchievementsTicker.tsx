@@ -8,7 +8,7 @@ export default function AchievementsTicker() {
   ];
 
   return (
-    <div className="w-full py-12 px-6 md:px-12">
+    <div className="w-full pt-4 pb-12 px-6 md:px-12">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6" data-testid="achievements-grid">
           {achievements.map((achievement, index) => (

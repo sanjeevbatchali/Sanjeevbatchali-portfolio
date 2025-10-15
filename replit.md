@@ -244,3 +244,7 @@ Preferred communication style: Simple, everyday language.
    - Fast and responsive movement with smooth follow effect (0.35 interpolation factor)
    - Respects prefers-reduced-motion accessibility setting
    - Fixed z-index layering for proper rendering
+11. **About Me Layout** - Reduced gap between About Me text and Achievements subsection:
+   - Decreased bottom padding of About Me section from 4rem to 2rem
+   - Decreased top padding of Achievements section from 3rem to 1rem
+   - Total gap reduced from 7rem (112px) to 3rem (48px) for tighter layout
