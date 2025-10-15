@@ -14,8 +14,8 @@ export default function RocketCursor() {
     let cursorY = 0;
 
     const updateCursor = () => {
-      cursorX += (mouseX - cursorX) * 0.2;
-      cursorY += (mouseY - cursorY) * 0.2;
+      cursorX += (mouseX - cursorX) * 0.15;
+      cursorY += (mouseY - cursorY) * 0.15;
       
       cursor.style.left = `${cursorX}px`;
       cursor.style.top = `${cursorY}px`;
