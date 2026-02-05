@@ -1,272 +1,49 @@
 # Interactive Resume Website for Sanjeev Batchali
 
 ## Overview
+This project is an interactive resume/portfolio website for Sanjeev Batchali, a finance professional. It's a single-page application (SPA) designed to showcase professional experience, skills, certifications, and contact information with a focus on clean design, professional aesthetics, and responsiveness. The application aims to provide a modern and engaging user experience, similar to high-end corporate career pages.
 
-This is a modern, interactive resume/portfolio website built for Sanjeev Batchali, a finance professional and Chartered Accountant specializing in transaction advisory, debt restructuring, and data analytics. The application is a single-page application (SPA) featuring smooth scrolling sections that showcase professional experience, skills, certifications, and contact information.
-
-The project follows a full-stack architecture with React frontend and Express backend, though currently the backend serves primarily as a static file server. The application emphasizes clean design, professional aesthetics, and responsive layouts inspired by modern portfolio websites like Linear and Stripe career pages.
+The project features:
+- An animated hero section with rotating taglines.
+- Detailed "About Me" and "Achievements" sections.
+- Professional experience cards and interactive skills display.
+- A dedicated "Blog" section for finance and career articles.
+- A "DevTools" section including a comprehensive loan amortization calculator.
 
 ## User Preferences
-
 Preferred communication style: Simple, everyday language.
 
 ## System Architecture
 
 ### Frontend Architecture
-
-**Framework & Build Tools:**
-- **React 18** with TypeScript for type-safe component development
-- **Vite** as the build tool and development server, providing fast HMR and optimized production builds
-- **Wouter** for lightweight client-side routing (though primarily single-page with hash navigation)
-
-**UI Component System:**
-- **Shadcn/ui** components built on Radix UI primitives for accessible, customizable UI elements
-- **Tailwind CSS** for utility-first styling with custom design tokens
-- Component library includes: Cards, Buttons, Badges, Navigation, Dialogs, Forms, and more
-- Custom color system supporting both light and dark modes with CSS variables
-
-**Design System:**
-- Typography using Inter (body) and Space Grotesk (headings) from Google Fonts
-- Consistent spacing using Tailwind's 4-point grid system (units: 4, 6, 8, 12, 16)
-- Custom color palette with professional blue accents (#3B82F6 range) and success green
-- Dark mode primary with light mode support
-- Responsive breakpoints: mobile (default), md (768px), lg (1024px)
-
-**State Management:**
-- **React Query (@tanstack/react-query)** for server state management and caching
-- Local component state with React hooks for UI interactions
-- Custom hooks for reusable logic (e.g., `use-mobile`, `use-toast`)
-
-**Key Features:**
-- Animated hero section with rotating taglines (2.5s interval) and gradient backdrop on profile photo
-- About Me section with personal narrative and hobbies (3 content versions available)
-- Quantified achievements ticker with greyscale styling
-- Smooth scroll navigation with full-page snap and bidirectional animations
-- Responsive navigation bar with mobile hamburger menu and theme toggle
-- Interactive skills display with animated scrolling badges (pause on hover)
-- Professional experience cards with refined spacing, shadows, and keyword highlighting
-- Horizontal scrolling certifications carousel
-- Contact section with location, email, LinkedIn, and phone information
-- **Blog section** with finance and career articles (separate pages with consistent design)
+- **Framework:** React 18 with TypeScript.
+- **Build Tool:** Vite for fast development and optimized production builds.
+- **Routing:** Wouter for lightweight client-side routing.
+- **UI Components:** Shadcn/ui (built on Radix UI) for accessible and customizable elements.
+- **Styling:** Tailwind CSS for utility-first styling, custom design tokens, and a custom color system with dark/light mode support.
+- **Design System:** Typography using Inter and Space Grotesk, 4-point grid system for spacing, responsive breakpoints (mobile, md, lg).
+- **State Management:** React Query for server state management, React hooks for local state.
+- **Key Features:** Animated hero section, quantified achievements ticker, smooth scroll navigation, responsive navigation, interactive skills display, professional experience cards, certifications carousel, contact section.
+- **Blog Section:** Separate pages for articles with consistent design, category filters, share buttons.
+- **DevTools Section:** Includes a "Loan Amortization Calculator" with multiple repayment types, moratorium support, XIRR calculation, visual pie chart (Chart.js), detailed amortization schedule, and Excel export (XLSX library).
+- **Performance:** Optimized scrolling, lazy/eager image loading, CSS performance enhancements, and an optimized custom rocket cursor.
 
 ### Backend Architecture
-
-**Server Framework:**
-- **Express.js** running on Node.js with TypeScript
-- Middleware for JSON/URL-encoded body parsing
-- Custom request/response logging for API routes
-- Error handling middleware for consistent error responses
-
-**Development vs Production:**
-- Development: Vite dev server integrated as Express middleware for HMR
-- Production: Serves pre-built static files from `/dist/public`
-- Conditional loading of Replit-specific plugins (cartographer, dev-banner) only in development
-
-**Build Process:**
-- Frontend: Vite builds React app to `dist/public`
-- Backend: esbuild bundles server code to `dist/index.js` as ESM module
-- Single production entry point: `node dist/index.js`
+- **Server Framework:** Express.js running on Node.js with TypeScript.
+- **Functionality:** Primarily serves static files in production. Includes middleware for JSON/URL parsing, request/response logging, and error handling.
+- **Build Process:** Frontend built by Vite to `dist/public`; Backend bundled by esbuild to `dist/index.js`.
 
 ### Data Storage
+- **Database:** Drizzle ORM configured for PostgreSQL with Neon serverless driver.
+- **Schema:** Basic user schema (`shared/schema.ts`).
+- **Migration:** `drizzle-kit` for database migrations.
+- **Storage Interface:** Abstracted storage layer (`server/storage.ts`) with in-memory implementation for development, designed for database swapability.
+- **Current State:** Database configured but not actively used by the application for persistence.
 
-**Database Setup:**
-- **Drizzle ORM** configured for PostgreSQL with Neon serverless driver
-- Schema location: `shared/schema.ts` (currently includes basic user table)
-- Migration system via `drizzle-kit` (migrations in `/migrations` directory)
-
-**Storage Interface:**
-- Abstracted storage layer (`server/storage.ts`) with interface pattern
-- In-memory storage implementation (`MemStorage`) for development/testing
-- CRUD methods: `getUser`, `getUserByUsername`, `createUser`
-- Designed to be swappable with database-backed implementation
-
-**Current State:**
-- Database configured but not actively used by the application
-- User schema exists with id, username, and password fields
-- Application is currently static with no authentication or data persistence
-
-### External Dependencies
-
-**Third-Party Services:**
-- **Google Fonts API** - Serving Inter and Space Grotesk font families
-- **Neon Database** - Serverless PostgreSQL (configured via `@neondatabase/serverless`)
-
-**UI Libraries:**
-- **Radix UI** - Complete suite of accessible component primitives (17+ packages)
-- **Lucide React** - Icon library for UI elements
-- **React Icons** - Additional icon sets (specifically using Simple Icons for tech logos)
-
-**Development Tools:**
-- **Replit Plugins** - Runtime error modal, cartographer, dev banner (development only)
-- **ESBuild** - Fast JavaScript bundler for server code
-- **PostCSS/Autoprefixer** - CSS processing pipeline
-
-**Form & Validation:**
-- **React Hook Form** - Form state management
-- **Zod** - Schema validation (with drizzle-zod integration)
-- **@hookform/resolvers** - Zod resolver for React Hook Form
-
-**Utility Libraries:**
-- **clsx** & **tailwind-merge** - Conditional className composition
-- **class-variance-authority** - Component variant styling system
-- **date-fns** - Date manipulation and formatting
-- **nanoid** - Unique ID generation
-
-**Assets:**
-- Profile image: `attached_assets/Screenshot 2025-10-05 223555_1759684246509.jpg`
-- Static assets resolved via Vite alias `@assets`
-
-## Recent Updates (October 2025)
-
-### Enhancements Implemented:
-1. **Tagline Animation** - Slowed rotation from 0.5s to 2.5s for better readability
-2. **About Me Section** - Added personal narrative with hobbies (F1, web design, badminton, table tennis) and Transaction Advisory focus (IPO, M&A, Turnaround Advisory)
-   - Three content versions available in component (Version 1 active with Transaction Advisory emphasis)
-3. **Achievements Section** - Redesigned as responsive grid with separate containers:
-   - Vertical layout: large numbers on top, descriptive text below
-   - Gradient backgrounds with subtle primary color shadows
-   - Responsive: 1 column (mobile) → 2 columns (tablet) → 5 columns (desktop)
-   - Metrics: 3+ Years Experience, 20+ Financial Models, 3+ Transactions, 30+ Pitch Decks, 20+ Dashboards
-4. **Mobile Navigation** - Responsive hamburger menu for tablets and phones
-5. **Profile Photo Enhancement** - Gradient backdrop (primary color) behind photo for visual depth
-6. **Card Refinements** - Improved spacing and subtle shadows on experience cards
-7. **Section Title Consistency** - All section headings standardized to 4xl/5xl/6xl for prominence
-
-### Page Structure:
-
-**Home Page (/):**
-- Hero Section (profile photo with gradient, rotating tagline)
-- About Me Section + Achievements Ticker
-- Experience Section (professional summary + company cards)
-- Skills Section (Finance + Tech skill tickers)
-- Certifications Section (horizontal scrolling certifications carousel)
-- Contact Section (location, email, LinkedIn, phone)
-
-**DevTools Section:**
-- DevTools Landing Page (/devtools):
-  - Hero section with title and subtitle
-  - Grid of tool cards with icons, descriptions, and tags
-  - Interactive hover effects with arrow animations
-  - Contact section footer
-- Loan Amortization Calculator (/devtools/loan-calculator):
-  - Professional calculator interface with form inputs and results display
-  - Supports multiple repayment types: EMI, Interest-only, Balloon payments
-  - Configurable repayment frequencies: Monthly, Quarterly, Half-yearly, Annually
-  - Moratorium period support with flexible tenure input (years, months)
-  - Fee calculations: Processing fee, Professional fee, Other costs
-  - Advanced outputs: Total Principal, Total Interest, Total Fees, Effective Interest Rate (XIRR)
-  - Visual pie chart breakdown using Chart.js
-  - Detailed amortization schedule table with payment-by-payment breakdown
-  - Excel export functionality using XLSX library
-  - Indian and International number formatting options
-  - Responsive 3-column layout (form, summary, schedule)
-
-**Blog Section:**
-- Blog Listing Page (/blog):
-  - Hero section with title and description
-  - Category filters (All Posts, Finance, Career)
-  - Grid of blog post cards with metadata (date, reading time, category)
-  - Contact section footer
-- Blog Post Pages (/blog/:slug):
-  - Back to blog navigation
-  - Post header with category, date, reading time
-  - Share buttons (LinkedIn, Twitter) with security protections
-  - Formatted article content with typography styling
-  - Author bio card
-  - Related posts section
-  - Contact section footer
-
-### Recent Updates (October 2025)
-
-#### Performance & Visual Enhancements (October 9, 2025):
-1. **Scrolling Performance** - Changed scroll-snap-type from "mandatory" to "proximity" to eliminate lag while maintaining section alignment
-2. **Background Enhancement** - Increased star count from ~50 to ~100 for richer cosmic background effect
-3. **Testing** - Verified smooth scrolling and visual improvements through e2e playwright tests
-4. **Production Build** - Updated dist/public folder (568KB) with performance optimizations
-
-#### Blog Implementation (October 9, 2025):
-1. **Navigation Update** - Replaced "Contact" with "Blog" in main navigation
-2. **Real LinkedIn Articles** - Updated blog with 2 real published articles:
-   - "What the Markets Told Trump: How Bond Yields and Basis Trades Derailed a Tariff Plan" (April 2025)
-   - "AI & ML: Reshaping Corporate Restructuring in India – Lessons from Global Best Practices" (September 2025)
-3. **Blog Pages** - Built listing and detail pages with matching portfolio design
-4. **Cross-Page Navigation** - Implemented hash-based navigation from blog back to home sections
-5. **Security** - Added opener protection to share buttons (prevents reverse tabnabbing)
-6. **Contact Accessibility** - Contact section now appears in blog page footers
-7. **Blog Images** - Added professional images from Unsplash:
-   - Hero images on individual blog post pages (responsive: 300px/400px/500px)
-   - Thumbnail images on blog listing cards (192px height)
-   - Hover zoom effect on thumbnails
-   - Stock market chart for Trump/tariffs article
-   - AI/technology image for ML/restructuring article
-8. **Production Build** - Created deployment-ready dist/public folder (564KB) with:
-   - Favicon (SB branding)
-   - CSP headers via _headers file (includes img-src for Unsplash CDN)
-   - Netlify routing via netlify.toml
-   - Optimized assets and bundles
-
-#### DevTools Implementation (October 9, 2025):
-1. **Navigation Update** - Removed Certifications link from navigation bar, added DevTools button to main navigation
-2. **DevTools Landing Page** - Created tool showcase page at /devtools:
-   - Hero section with "Developer Tools" title
-   - Grid layout for tool cards with hover effects
-   - Calculator icon and descriptive tags
-   - Professional design matching portfolio aesthetic
-3. **Loan Amortization Calculator** - Built comprehensive financial calculator at /devtools/loan-calculator:
-   - Enhanced React/TypeScript implementation of loan calculator
-   - Complete EMI calculation with three repayment types (EMI, Interest-only, Balloon)
-   - Support for moratorium periods and multiple repayment frequencies
-   - XIRR calculation for effective interest rate
-   - Visual pie chart using Chart.js
-   - Detailed amortization schedule table
-   - Excel export functionality using XLSX library
-   - Form validation with error messages
-   - Indian and International number formatting
-   - Responsive 3-column layout (inputs, summary, schedule)
-4. **Dependencies Added** - Installed xlsx, chart.js, react-chartjs-2 for calculator functionality
-5. **Home Page Structure** - Certifications section remains on homepage between Skills and Contact sections
-6. **Testing** - Verified end-to-end functionality through Playwright tests
-7. **Production Build** - Updated dist/public folder (823KB) with DevTools section
-8. **Moratorium Fix** - Corrected interest capitalization logic in loan calculator:
-   - EMI/Balloon loans: Interest accrues and capitalizes during moratorium (adds to balance)
-   - Balloon loans: Payment recalculated (2% of new balance) after moratorium ends
-   - Interest-only loans: Interest paid during moratorium, no capitalization
-   - Added safety check to prevent negative balances in EMI calculations
-   - XIRR and total interest now correctly reflect capitalized amounts
-9. **Pie Chart Enhancement** - Updated loan breakdown visualization with professional blue color scheme:
-   - Principal: Dark blue (rgb(59, 130, 246)) with darker hover (rgb(37, 99, 235))
-   - Interest: Medium blue (rgb(96, 165, 250)) with darker hover (rgb(59, 130, 246))
-   - Other Costs: Light blue (rgb(147, 197, 253)) with darker hover (rgb(96, 165, 250))
-   - Interactive hover effects darken each segment for better user engagement
-10. **Custom Rocket Cursor** - Added animated rocket cursor with trailing effect:
-   - Custom rocket emoji (🚀) cursor across entire site at 0° angle (pointing forward/right)
-   - Smooth trailing animation with blue gradient particles
-   - Fast and responsive movement with smooth follow effect (0.35 interpolation factor)
-   - Respects prefers-reduced-motion accessibility setting
-   - Fixed z-index layering for proper rendering
-11. **About Me Layout** - Reduced gap between About Me text and Achievements subsection:
-   - Decreased bottom padding of About Me section from 4rem to 2rem
-   - Decreased top padding of Achievements section from 3rem to 1rem
-   - Total gap reduced from 7rem (112px) to 3rem (48px) for tighter layout
-12. **Netlify Deployment Fix** - Configured proper file structure for Netlify deployment:
-   - Created `client/public/_headers` file for security headers (auto-copied to build)
-   - Verified `netlify.toml` publish directory: `dist/public` (where index.html lives)
-   - Updated DEPLOYMENT.md with comprehensive troubleshooting guide
-   - Created NETLIFY-QUICK-START.md for 2-minute deployment instructions
-   - Build structure: dist/public/index.html, dist/public/_headers, dist/public/assets/
-   - Ready for both GitHub auto-deploy and manual drag-and-drop deployment
-13. **Performance Optimization** - Comprehensive performance improvements across the site:
-   - **Rocket Cursor Optimization**: 
-     - Implemented element pooling (20 reusable trail elements) instead of creating/destroying DOM nodes
-     - Added throttling to trail creation (50ms intervals vs continuous)
-     - Changed to transform-based positioning for better GPU acceleration
-     - Added `will-change` CSS hints for optimized rendering
-     - Reduced cursor lag on Blog and DevTools pages by 80%+
-   - **Image Loading Optimization**:
-     - Added `loading="lazy"` to Blog thumbnail images for deferred loading
-     - Added `loading="eager"` to hero/above-fold images for priority loading
-     - Added `decoding="async"` to all images for non-blocking decode
-   - **CSS Performance**:
-     - Added `will-change: transform` to animated cursor elements
-     - Optimized animation performance with passive event listeners
-   - **Result**: Smooth 60fps cursor animation on all pages, faster page loads
+## External Dependencies
+- **Third-Party Services:** Google Fonts API, Neon Database (@neondatabase/serverless).
+- **UI Libraries:** Radix UI, Lucide React (icons), React Icons (Simple Icons).
+- **Development Tools:** Replit Plugins (dev only), ESBuild, PostCSS/Autoprefixer.
+- **Form & Validation:** React Hook Form, Zod, @hookform/resolvers.
+- **Utility Libraries:** clsx, tailwind-merge, class-variance-authority, date-fns, nanoid.
+- **Calculator Specific:** xlsx, chart.js, react-chartjs-2.
