@@ -447,18 +447,22 @@
   }
 }
 
-/* Rocket Cursor */
+/* Custom Cursor */
 * {
   cursor: none !important;
 }
 
-.rocket-cursor {
+.custom-cursor {
   position: fixed;
   pointer-events: none;
   z-index: 9999;
-  font-size: 24px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3B82F6, #60A5FA);
   will-change: transform;
-  filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.5));
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.6), 0 0 20px rgba(59, 130, 246, 0.4);
+  transform: translate(-50%, -50%);
 }
 
 .cursor-trail {
@@ -490,7 +494,7 @@
     cursor: auto !important;
   }
   
-  .rocket-cursor,
+  .custom-cursor,
   .cursor-trail {
     display: none;
   }

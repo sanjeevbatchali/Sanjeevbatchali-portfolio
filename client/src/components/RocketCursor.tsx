@@ -80,8 +80,6 @@ export default function RocketCursor() {
   }, []);
 
   return (
-    <div ref={cursorRef} className="rocket-cursor" style={{ left: 0, top: 0 }}>
-      🚀
-    </div>
+    <div ref={cursorRef} className="custom-cursor" style={{ left: 0, top: 0 }} />
   );
 }
