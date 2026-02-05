@@ -216,6 +216,35 @@ export default function ExperienceSection() {
           Experience
         </h2>
 
+        {/* Work History */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 max-w-4xl mx-auto">
+          <Card className="p-6 border-accent-border/20 bg-card/50 backdrop-blur-sm hover-elevate" data-testid="card-work-fpc">
+            <div className="flex items-start gap-4">
+              <div className="p-3 rounded-xl bg-primary/10 flex-shrink-0">
+                <Briefcase className="w-6 h-6 text-primary" />
+              </div>
+              <div>
+                <h3 className="font-accent font-bold text-lg text-foreground">First Partner Consulting</h3>
+                <p className="text-primary font-semibold text-sm mt-1">Associate Manager</p>
+                <p className="text-muted-foreground text-sm">Transaction Advisory</p>
+                <p className="text-muted-foreground text-xs mt-2 font-medium uppercase tracking-wider">Sept 2024 - Present</p>
+              </div>
+            </div>
+          </Card>
+          <Card className="p-6 border-accent-border/20 bg-card/50 backdrop-blur-sm hover-elevate" data-testid="card-work-ey">
+            <div className="flex items-start gap-4">
+              <div className="p-3 rounded-xl bg-primary/10 flex-shrink-0">
+                <Briefcase className="w-6 h-6 text-primary" />
+              </div>
+              <div>
+                <h3 className="font-accent font-bold text-lg text-foreground">Ernst and Young</h3>
+                <p className="text-primary font-semibold text-sm mt-1">Associate - Debt and Special Situations</p>
+                <p className="text-muted-foreground text-xs mt-2 font-medium uppercase tracking-wider">Jan 2023 - Aug 2024</p>
+              </div>
+            </div>
+          </Card>
+        </div>
+
         <div className="flex justify-center gap-4 mb-12">
           <Button 
             variant={view === 'industry' ? 'default' : 'outline'}

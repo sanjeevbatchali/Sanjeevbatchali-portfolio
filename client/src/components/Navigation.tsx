@@ -6,8 +6,7 @@ import { Link, useLocation } from 'wouter';
 const sections = [
   { id: 'hero', label: 'Home' },
   { id: 'about', label: 'About' },
-  { id: 'experience', label: 'Experience' },
-  { id: 'skills', label: 'Skills' }
+  { id: 'experience', label: 'Experience' }
 ];
 
 export default function Navigation() {
@@ -103,6 +102,18 @@ export default function Navigation() {
               {section.label}
             </button>
           ))}
+          <Link href="/my-work">
+            <button
+              className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                location === '/my-work'
+                  ? 'bg-primary text-primary-foreground'
+                  : 'hover-elevate'
+              }`}
+              data-testid="button-nav-my-work"
+            >
+              My Work
+            </button>
+          </Link>
           <Link href="/blog">
             <button
               className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
@@ -171,6 +182,19 @@ export default function Navigation() {
                 {section.label}
               </button>
             ))}
+            <Link href="/my-work">
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className={`px-4 py-3 rounded-md text-left font-medium transition-colors w-full ${
+                  location === '/my-work'
+                    ? 'bg-primary text-primary-foreground'
+                    : 'hover-elevate'
+                }`}
+                data-testid="button-mobile-nav-my-work"
+              >
+                My Work
+              </button>
+            </Link>
             <Link href="/blog">
               <button
                 onClick={() => setMobileMenuOpen(false)}

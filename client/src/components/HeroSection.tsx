@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { Button } from '@/components/ui/button';
+import { Calendar } from 'lucide-react';
 import profileImage from '../../public/profile.jpg';
 
 const taglines = [
@@ -51,6 +53,17 @@ export default function HeroSection() {
             >
               {taglines[currentTagline]}
             </p>
+          </div>
+          <div className="mt-6 flex justify-center lg:justify-start">
+            <Button 
+              size="lg"
+              onClick={() => window.open('https://calendly.com/ca-sanjeevbatchali/30min', '_blank')}
+              className="gap-2"
+              data-testid="button-book-meeting"
+            >
+              <Calendar className="w-5 h-5" />
+              Book a Meeting
+            </Button>
           </div>
         </div>
         <div className="lg:col-span-2 flex justify-center lg:justify-end">
