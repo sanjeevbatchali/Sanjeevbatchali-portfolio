@@ -4,6 +4,7 @@ import HeroSection from '@/components/HeroSection';
 import AboutSection from '@/components/AboutSection';
 import AchievementsTicker from '@/components/AchievementsTicker';
 import ExperienceSection from '@/components/ExperienceSection';
+import SkillsSection from '@/components/SkillsSection';
 import CertificationsSection from '@/components/CertificationsSection';
 import ContactSection from '@/components/ContactSection';
 import CosmicWave from '@/components/CosmicWave';
@@ -45,6 +46,9 @@ export default function Home() {
         </div>
         <div id="experience" className="scroll-section section-experience">
           <ExperienceSection />
+        </div>
+        <div id="skills" className="scroll-section section-skills">
+          <SkillsSection />
         </div>
         <div id="certifications" className="scroll-section section-certifications">
           <CertificationsSection />
