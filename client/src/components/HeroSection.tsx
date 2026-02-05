@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import profileImage from '@assets/Screenshot 2025-10-05 223555_1759684246509.jpg';
+import profileImage from '../../public/profile.jpg';
 
 const taglines = [
   'Finance Professional',
