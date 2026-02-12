@@ -1,6 +1,6 @@
 import { useRoute, Link } from 'wouter';
 import { Calendar, Clock, ArrowLeft, Share2, Linkedin, Twitter } from 'lucide-react';
-import { blogPosts } from '@shared/blogData';
+import { blogPosts } from '@/lib/blogLoader';
 import Navigation from '@/components/Navigation';
 import ContactSection from '@/components/ContactSection';
 import { Badge } from '@/components/ui/badge';

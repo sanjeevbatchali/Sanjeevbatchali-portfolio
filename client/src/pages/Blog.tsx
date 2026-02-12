@@ -1,6 +1,6 @@
 import { Link } from 'wouter';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
-import { blogPosts } from '@shared/blogData';
+import { blogPosts } from '@/lib/blogLoader';
 import Navigation from '@/components/Navigation';
 import ContactSection from '@/components/ContactSection';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';

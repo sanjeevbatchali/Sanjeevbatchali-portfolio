@@ -1,0 +1,26 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "client/public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "client/content/blog"
+    create: true
+    slug: "{{slug}}"
+    sortable_fields: ["date", "title"]
+    editor:
+      preview: false
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string", pattern: ["^[a-z0-9]+(?:-[a-z0-9]+)*$", "Lowercase letters, numbers, and hyphens only"] }
+      - { label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Category", name: "category", widget: "select", options: ["Finance", "Career", "Technology", "Consulting"] }
+      - { label: "Excerpt", name: "excerpt", widget: "text" }
+      - { label: "Read Time (minutes)", name: "readTime", widget: "number", value_type: "int", min: 1, max: 60 }
+      - { label: "Author", name: "author", widget: "string", default: "Sanjeev Batchali" }
+      - { label: "Cover Image URL", name: "imageUrl", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }

@@ -24,9 +24,10 @@ Preferred communication style: Simple, everyday language.
 - **Design System:** Typography using Inter and Space Grotesk, 4-point grid system for spacing, responsive breakpoints (mobile, md, lg).
 - **State Management:** React Query for server state management, React hooks for local state.
 - **Key Features:** Animated hero section, quantified achievements ticker, smooth scroll navigation, responsive navigation, interactive skills display, professional experience cards, certifications carousel, contact section.
-- **Blog Section:** Separate pages for articles with consistent design, category filters, share buttons.
+- **Blog Section:** Separate pages for articles with consistent design, category filters, share buttons. Blog posts are stored as markdown files in `client/content/blog/` with YAML frontmatter, loaded at build time via `import.meta.glob`. Decap CMS (formerly Netlify CMS) is integrated at `/admin` for browser-based blog authoring without code changes.
 - **DevTools Section:** Includes a "Loan Amortization Calculator" with multiple repayment types, moratorium support, XIRR calculation, visual pie chart (Chart.js), detailed amortization schedule, and Excel export (XLSX library).
-- **Performance:** Optimized scrolling, lazy/eager image loading, CSS performance enhancements, and an optimized custom rocket cursor.
+- **Performance:** Optimized scrolling, lazy/eager image loading, CSS performance enhancements, lightweight custom dot cursor (no trail effects).
+- **CMS:** Decap CMS at `/admin` for blog management. Requires Netlify Identity + Git Gateway enabled on Netlify dashboard. Blog posts stored as markdown in `client/content/blog/`.
 
 ### Backend Architecture
 - **Server Framework:** Express.js running on Node.js with TypeScript.
