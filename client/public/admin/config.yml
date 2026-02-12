@@ -2,13 +2,13 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "client/public/images/uploads"
+media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
 
 collections:
   - name: "blog"
     label: "Blog Posts"
-    folder: "client/content/blog"
+    folder: "content/blog"
     create: true
     slug: "{{slug}}"
     sortable_fields: ["date", "title"]
