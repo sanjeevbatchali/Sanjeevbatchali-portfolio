@@ -144,11 +144,8 @@ Important:
   return { ...parsed, body };
 }
 
-function formatPreviewMessage(draft: BlogPost): string {
-  const bodyPreview = draft.body.substring(0, 800);
-  const truncated = draft.body.length > 800 ? "\n\n... (truncated for preview)" : "";
-
-  return [
+function formatPreviewMessages(draft: BlogPost): string[] {
+  const header = [
     `*Blog Post Preview*`,
     ``,
     `*Title:* ${escapeMarkdown(draft.title)}`,
@@ -160,8 +157,10 @@ function formatPreviewMessage(draft: BlogPost): string {
     `*Excerpt:*`,
     escapeMarkdown(draft.excerpt),
     ``,
-    `*Body Preview:*`,
-    escapeMarkdown(bodyPreview) + truncated,
+    `*Body:*`,
+  ].join("\n");
+
+  const footer = [
     ``,
     `\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014`,
     `What would you like to do?`,
@@ -169,6 +168,60 @@ function formatPreviewMessage(draft: BlogPost): string {
     `\u2022 Type *edit:* followed by your changes \\(e\\.g\\. "edit: make it shorter"\\)`,
     `\u2022 Type *cancel* to discard this draft`,
   ].join("\n");
+
+  const escapedBody = escapeMarkdown(draft.body);
+  const maxLen = 4000;
+
+  if ((header + "\n" + escapedBody + footer).length <= maxLen) {
+    return [header + "\n" + escapedBody + footer];
+  }
+
+  const messages: string[] = [];
+  const bodyChunks = splitTextIntoChunks(escapedBody, maxLen - header.length - 50);
+
+  messages.push(header + "\n" + bodyChunks[0] + (bodyChunks.length > 1 ? "\n\n_\\(continued\\.\\.\\.\\)_" : ""));
+
+  for (let i = 1; i < bodyChunks.length; i++) {
+    const isLast = i === bodyChunks.length - 1;
+    const partLabel = `*\\(Part ${i + 1}/${bodyChunks.length}\\)*\n\n`;
+    messages.push(partLabel + bodyChunks[i] + (!isLast ? "\n\n_\\(continued\\.\\.\\.\\)_" : ""));
+  }
+
+  messages.push(footer);
+  return messages;
+}
+
+function splitTextIntoChunks(text: string, maxLen: number): string[] {
+  const chunks: string[] = [];
+  let remaining = text;
+  while (remaining.length > 0) {
+    if (remaining.length <= maxLen) {
+      chunks.push(remaining);
+      break;
+    }
+    let splitAt = remaining.lastIndexOf("\n", maxLen);
+    if (splitAt < maxLen * 0.3) {
+      splitAt = remaining.lastIndexOf(" ", maxLen);
+    }
+    if (splitAt <= 0) {
+      splitAt = maxLen;
+    }
+    chunks.push(remaining.substring(0, splitAt));
+    remaining = remaining.substring(splitAt).trimStart();
+  }
+  return chunks;
+}
+
+async function sendPreview(ctx: any, draft: BlogPost, label = "Blog Post Preview") {
+  const messages = formatPreviewMessages(draft);
+  for (const msg of messages) {
+    try {
+      await ctx.reply(msg, { parse_mode: "MarkdownV2" });
+    } catch {
+      const plain = msg.replace(/\\([_*\[\]()~`>#+\-=|{}.!])/g, "$1");
+      await ctx.reply(plain);
+    }
+  }
 }
 
 function escapeMarkdown(text: string): string {
@@ -310,25 +363,7 @@ export function startTelegramBot(): Telegraf | null {
           session.draft = draft;
           session.step = "preview";
 
-          const previewMsg = formatPreviewMessage(draft);
-          try {
-            await ctx.reply(previewMsg, { parse_mode: "MarkdownV2" });
-          } catch {
-            await ctx.reply(
-              `Blog Post Preview\n\n` +
-              `Title: ${draft.title}\n` +
-              `Category: ${draft.category}\n` +
-              `Date: ${draft.date}\n` +
-              `Read Time: ${draft.readTime} min\n\n` +
-              `Excerpt:\n${draft.excerpt}\n\n` +
-              `Body Preview:\n${draft.body.substring(0, 800)}${draft.body.length > 800 ? "\n\n... (truncated)" : ""}\n\n` +
-              `----------\n` +
-              `What would you like to do?\n` +
-              `- Type 'publish' to save and publish\n` +
-              `- Type 'edit: [instructions]' to request changes\n` +
-              `- Type 'cancel' to discard`
-            );
-          }
+          await sendPreview(ctx, draft);
         } catch (error) {
           console.error("[Telegram Bot] Error generating blog:", error);
           session.step = "idle";
@@ -377,25 +412,7 @@ export function startTelegramBot(): Telegraf | null {
             );
             session.step = "preview";
 
-            const previewMsg = formatPreviewMessage(session.draft);
-            try {
-              await ctx.reply(previewMsg, { parse_mode: "MarkdownV2" });
-            } catch {
-              await ctx.reply(
-                `Updated Blog Post Preview\n\n` +
-                `Title: ${session.draft.title}\n` +
-                `Category: ${session.draft.category}\n` +
-                `Date: ${session.draft.date}\n` +
-                `Read Time: ${session.draft.readTime} min\n\n` +
-                `Excerpt:\n${session.draft.excerpt}\n\n` +
-                `Body Preview:\n${session.draft.body.substring(0, 800)}${session.draft.body.length > 800 ? "\n\n... (truncated)" : ""}\n\n` +
-                `----------\n` +
-                `What would you like to do?\n` +
-                `- Type 'publish' to save and publish\n` +
-                `- Type 'edit: [instructions]' to request changes\n` +
-                `- Type 'cancel' to discard`
-              );
-            }
+            await sendPreview(ctx, session.draft);
           } catch (error) {
             console.error("[Telegram Bot] Error editing blog:", error);
             session.step = "preview";
