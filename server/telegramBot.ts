@@ -96,7 +96,7 @@ Important:
   return {
     title: parsed.title || topic,
     excerpt: parsed.excerpt || `A blog post about ${topic}`,
-    body: parsed.body || "",
+    body,
     imageUrl,
   };
 }
@@ -127,17 +127,22 @@ Please provide the updated blog post in the following JSON format:
 Important:
 - Only make the changes requested, keep everything else the same
 - Maintain the same markdown formatting
-- The body should NOT include the title as an H1`;
+- The body MUST start with the title as an H1 header (# Title) on the first line, followed by the content`;
 
   const response = await openai.chat.completions.create({
-    model: "gpt-5.2",
+    model: "gpt-4o",
     messages: [{ role: "user", content: prompt }],
     response_format: { type: "json_object" },
     max_completion_tokens: 4096,
   });
 
   const content = response.choices[0]?.message?.content || "{}";
-  return JSON.parse(content);
+  const parsed = JSON.parse(content);
+  let body = parsed.body || "";
+  if (body && !body.trimStart().startsWith("# ")) {
+    body = `# ${parsed.title || currentDraft.title}\n\n${body}`;
+  }
+  return { ...parsed, body };
 }
 
 function formatPreviewMessage(draft: BlogPost): string {
