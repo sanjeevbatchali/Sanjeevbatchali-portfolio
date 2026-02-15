@@ -1,12 +1,15 @@
 import { useRoute, Link } from 'wouter';
 import { Calendar, Clock, ArrowLeft, Share2, Linkedin, Twitter } from 'lucide-react';
-import { blogPosts } from '@/lib/blogLoader';
+import { blogPosts, resolveImageUrl } from '@/lib/blogLoader';
 import Navigation from '@/components/Navigation';
 import ContactSection from '@/components/ContactSection';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import NotFound from '@/pages/not-found';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 
 export default function BlogPost() {
   const [, params] = useRoute('/blog/:slug');
@@ -41,7 +44,7 @@ export default function BlogPost() {
       <div className="pt-20 pb-0">
         <div className="w-full h-[300px] md:h-[400px] lg:h-[500px] overflow-hidden">
           <img 
-            src={post.imageUrl} 
+            src={resolveImageUrl(post.imageUrl)} 
             alt={post.title}
             loading="eager"
             decoding="async"
@@ -130,26 +133,24 @@ export default function BlogPost() {
               prose-a:text-primary prose-a:no-underline hover:prose-a:underline
               prose-strong:text-foreground prose-strong:font-semibold
               prose-ul:my-6 prose-li:my-2
-              prose-code:text-primary prose-code:bg-muted prose-code:px-1 prose-code:py-0.5 prose-code:rounded"
+              prose-img:rounded-lg prose-img:my-6
+              prose-code:text-primary prose-code:bg-muted prose-code:px-1 prose-code:py-0.5 prose-code:rounded
+              prose-table:border-collapse prose-th:border prose-th:border-border prose-th:p-2 prose-td:border prose-td:border-border prose-td:p-2"
             data-testid="article-content"
-            dangerouslySetInnerHTML={{ __html: post.content.split('\n').map(line => {
-              if (line.startsWith('# ')) {
-                return `<h1>${line.substring(2)}</h1>`;
-              } else if (line.startsWith('## ')) {
-                return `<h2>${line.substring(3)}</h2>`;
-              } else if (line.startsWith('### ')) {
-                return `<h3>${line.substring(4)}</h3>`;
-              } else if (line.startsWith('- ')) {
-                return `<li>${line.substring(2)}</li>`;
-              } else if (line.trim() === '') {
-                return '<br />';
-              } else if (line.startsWith('**') && line.endsWith('**')) {
-                return `<p><strong>${line.substring(2, line.length - 2)}</strong></p>`;
-              } else {
-                return `<p>${line}</p>`;
-              }
-            }).join('') }}
-          />
+          >
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              rehypePlugins={[rehypeRaw]}
+              components={{
+                img: ({ src, alt, ...props }) => {
+                  const resolvedSrc = resolveImageUrl(src || '');
+                  return <img src={resolvedSrc} alt={alt || ''} loading="lazy" className="rounded-lg my-6 max-w-full" {...props} />;
+                },
+              }}
+            >
+              {post.content}
+            </ReactMarkdown>
+          </div>
 
           {/* Author Card */}
           <Card className="mt-12 p-6" data-testid="card-author">

@@ -1,6 +1,6 @@
 import { Link } from 'wouter';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
-import { blogPosts } from '@/lib/blogLoader';
+import { blogPosts, resolveImageUrl } from '@/lib/blogLoader';
 import Navigation from '@/components/Navigation';
 import ContactSection from '@/components/ContactSection';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -48,7 +48,7 @@ export default function Blog() {
                 <Card className="h-full hover-elevate transition-all duration-300 overflow-hidden" data-testid={`card-blog-${post.slug}`}>
                   <div className="w-full h-48 overflow-hidden">
                     <img 
-                      src={post.imageUrl} 
+                      src={resolveImageUrl(post.imageUrl)} 
                       alt={post.title}
                       loading="lazy"
                       decoding="async"
