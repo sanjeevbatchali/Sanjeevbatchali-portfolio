@@ -41,6 +41,14 @@ Preferred communication style: Simple, everyday language.
 - **Storage Interface:** Abstracted storage layer (`server/storage.ts`) with in-memory implementation for development, designed for database swapability.
 - **Current State:** Database configured but not actively used by the application for persistence.
 
+### Telegram Blog Bot
+- **Purpose:** A Telegram bot that allows writing and publishing blog posts via Telegram chat using AI content generation.
+- **Files:** `server/telegramBot.ts` (bot logic), `server/blogWriter.ts` (markdown file writer)
+- **Flow:** User sends /newblog -> provides topic, category, key points, tone -> AI generates blog -> user reviews/edits/publishes via Telegram
+- **Dependencies:** Telegraf (Telegram bot framework), OpenAI via Replit AI Integrations
+- **Config:** Requires `TELEGRAM_BOT_TOKEN` secret (from @BotFather on Telegram)
+- **Blog Format:** Creates markdown files in `client/content/blog/` matching Decap CMS frontmatter schema (title, slug, date, category, excerpt, readTime, author, imageUrl, body)
+
 ## External Dependencies
 - **Third-Party Services:** Google Fonts API, Neon Database (@neondatabase/serverless).
 - **UI Libraries:** Radix UI, Lucide React (icons), React Icons (Simple Icons).
