@@ -49,6 +49,15 @@ Preferred communication style: Simple, everyday language.
 - **Config:** Requires `TELEGRAM_BOT_TOKEN` secret (from @BotFather on Telegram)
 - **Blog Format:** Creates markdown files in `client/content/blog/` matching Decap CMS frontmatter schema (title, slug, date, category, excerpt, readTime, author, imageUrl, body)
 
+## SEO
+- **Package:** `react-helmet-async` with `HelmetProvider` wrapping the app root in `App.tsx`.
+- **SEOHead Component:** `client/src/components/SEOHead.tsx` — reusable component accepting title, description, path, ogType, ogImage, and optional JSON-LD structuredData props. Renders title, meta description, Open Graph tags, Twitter Card tags, and canonical link for every page.
+- **Per-page metadata:** All pages (Home, Blog, BlogPost, MyWork, DevTools, LoanCalculator) import and render `<SEOHead>`. BlogPost uses dynamic values from post frontmatter. Home page includes a `Person` JSON-LD schema. BlogPost includes an `Article` JSON-LD schema.
+- **Canonical domain:** `https://www.sanjeevbatchali.in`
+- **robots.txt:** `client/public/robots.txt` — allows all crawlers, points to sitemap.
+- **sitemap.xml:** `client/public/sitemap.xml` — lists all static routes and all 4 blog post URLs.
+- **Fallback OG tags:** `client/index.html` includes static OG/Twitter meta tags as fallbacks for crawlers that don't execute JavaScript.
+
 ## External Dependencies
 - **Third-Party Services:** Google Fonts API, Neon Database (@neondatabase/serverless).
 - **UI Libraries:** Radix UI, Lucide React (icons), React Icons (Simple Icons).

@@ -1,4 +1,5 @@
 import Navigation from '@/components/Navigation';
+import SEOHead from '@/components/SEOHead';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { FileText, BarChart3, Calculator, PieChart, TrendingUp, Building2, Briefcase, Target } from 'lucide-react';
@@ -108,6 +109,11 @@ const categories = ["All", "Transaction Advisory", "Financial Modelling", "Restr
 export default function MyWork() {
   return (
     <div className="min-h-screen">
+      <SEOHead
+        title="My Work - Transaction Advisory & Financial Modelling Projects"
+        description="Explore Sanjeev Batchali's key engagements: infrastructure project finance exceeding INR 5,000 Cr, renewable energy valuations, debt restructuring, M&A due diligence, and FP&A."
+        path="/my-work"
+      />
       <CosmicWave />
       <Navigation />
       <main className="pt-24 pb-16 px-6 md:px-12">

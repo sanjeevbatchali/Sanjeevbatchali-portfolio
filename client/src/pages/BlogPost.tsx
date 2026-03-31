@@ -2,6 +2,7 @@ import { useRoute, Link } from 'wouter';
 import { Calendar, Clock, ArrowLeft, Share2, Linkedin, Twitter } from 'lucide-react';
 import { blogPosts, resolveImageUrl } from '@/lib/blogLoader';
 import Navigation from '@/components/Navigation';
+import SEOHead from '@/components/SEOHead';
 import ContactSection from '@/components/ContactSection';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -22,6 +23,32 @@ export default function BlogPost() {
   const shareUrl = typeof window !== 'undefined' ? window.location.href : '';
   const shareText = `Check out: ${post.title}`;
 
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.excerpt,
+    author: {
+      '@type': 'Person',
+      name: post.author,
+      url: 'https://www.sanjeevbatchali.in',
+    },
+    publisher: {
+      '@type': 'Person',
+      name: 'Sanjeev Batchali',
+      url: 'https://www.sanjeevbatchali.in',
+    },
+    datePublished: post.date,
+    dateModified: post.date,
+    url: `https://www.sanjeevbatchali.in/blog/${post.slug}`,
+    image: resolveImageUrl(post.imageUrl) || 'https://www.sanjeevbatchali.in/profile.jpg',
+    articleSection: post.category,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://www.sanjeevbatchali.in/blog/${post.slug}`,
+    },
+  };
+
   const shareOnLinkedIn = () => {
     const newWindow = window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`, '_blank');
     if (newWindow) {
@@ -38,6 +65,14 @@ export default function BlogPost() {
 
   return (
     <div className="min-h-screen">
+      <SEOHead
+        title={post.title}
+        description={post.excerpt}
+        path={`/blog/${post.slug}`}
+        ogType="article"
+        ogImage={resolveImageUrl(post.imageUrl) || undefined}
+        structuredData={articleSchema}
+      />
       <Navigation />
       
       {/* Hero Image */}

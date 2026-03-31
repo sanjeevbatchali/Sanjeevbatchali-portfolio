@@ -1,4 +1,5 @@
 import Navigation from '@/components/Navigation';
+import SEOHead from '@/components/SEOHead';
 import ContactSection from '@/components/ContactSection';
 import CosmicWave from '@/components/CosmicWave';
 import { Link } from 'wouter';
@@ -19,6 +20,11 @@ const tools = [
 export default function DevTools() {
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Finance Tools - Loan Calculator & Financial Utilities"
+        description="Free professional financial calculators built by Sanjeev Batchali — including a Loan Amortization Calculator with EMI schedules, XIRR, moratorium support, and Excel export."
+        path="/devtools"
+      />
       <CosmicWave />
       <Navigation />
       

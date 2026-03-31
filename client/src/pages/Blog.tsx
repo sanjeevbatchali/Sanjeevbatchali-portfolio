@@ -2,6 +2,7 @@ import { Link } from 'wouter';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import { blogPosts, resolveImageUrl } from '@/lib/blogLoader';
 import Navigation from '@/components/Navigation';
+import SEOHead from '@/components/SEOHead';
 import ContactSection from '@/components/ContactSection';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -11,6 +12,11 @@ export default function Blog() {
 
   return (
     <div className="min-h-screen">
+      <SEOHead
+        title="Blog - Finance & Transaction Advisory Insights"
+        description="Insights on finance, transaction advisory, debt restructuring, and career development from Sanjeev Batchali — Chartered Accountant and Finance Professional."
+        path="/blog"
+      />
       <Navigation />
       
       {/* Hero Section */}

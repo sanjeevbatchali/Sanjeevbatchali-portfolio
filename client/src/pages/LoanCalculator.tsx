@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import Navigation from '@/components/Navigation';
+import SEOHead from '@/components/SEOHead';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -430,6 +431,11 @@ export default function LoanCalculator() {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Loan Amortization Calculator - EMI, Interest Only & Balloon Payments"
+        description="Free loan amortization calculator by Sanjeev Batchali. Calculate EMI schedules, interest-only and balloon payments with moratorium support, XIRR, and Excel export. Supports Indian and international number formats."
+        path="/devtools/loan-calculator"
+      />
       <Navigation />
       
       <main className="relative z-10 px-6 pt-24 pb-12">
