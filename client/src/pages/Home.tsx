@@ -68,8 +68,8 @@ export default function Home() {
   return (
     <div className="scroll-container">
       <SEOHead
-        title="Sanjeev Batchali - Finance Professional & Chartered Accountant"
-        description="Portfolio of Sanjeev Batchali, a Chartered Accountant and Finance Professional with expertise in transaction advisory, debt restructuring, project finance, and data analytics. CFA Level 2 Candidate."
+        title="Sanjeev Batchali | CA & Finance Professional – Transaction Advisory & Restructuring"
+        description="Sanjeev Batchali is a Chartered Accountant and CFA Level 2 Candidate specialising in transaction advisory, debt restructuring, project finance, and M&A. Based in India."
         path="/"
         ogType="website"
         structuredData={personSchema}
