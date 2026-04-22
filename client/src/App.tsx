@@ -11,6 +11,7 @@ import Blog from "@/pages/Blog";
 import BlogPost from "@/pages/BlogPost";
 import DevTools from "@/pages/DevTools";
 import LoanCalculator from "@/pages/LoanCalculator";
+import EPCOrderTracker from "@/pages/EPCOrderTracker";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -22,6 +23,7 @@ function Router() {
       <Route path="/blog/:slug" component={BlogPost} />
       <Route path="/devtools" component={DevTools} />
       <Route path="/devtools/loan-calculator" component={LoanCalculator} />
+      <Route path="/devtools/epc-order-tracker" component={EPCOrderTracker} />
       <Route component={NotFound} />
     </Switch>
   );

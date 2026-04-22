@@ -3,7 +3,7 @@ import SEOHead from '@/components/SEOHead';
 import ContactSection from '@/components/ContactSection';
 import CosmicWave from '@/components/CosmicWave';
 import { Link } from 'wouter';
-import { Calculator, ArrowRight } from 'lucide-react';
+import { Calculator, ArrowRight, Building2, Lock } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 
 const tools = [
@@ -13,7 +13,17 @@ const tools = [
     description: 'Calculate EMI schedules, Interest-only and Balloon payments with Excel export. Supports multiple repayment frequencies and moratorium periods.',
     icon: Calculator,
     href: '/devtools/loan-calculator',
-    tags: ['Finance', 'Calculator', 'Excel Export']
+    tags: ['Finance', 'Calculator', 'Excel Export'],
+    demo: false,
+  },
+  {
+    id: 'epc-order-tracker',
+    title: 'EPC Order Tracker',
+    description: 'Track tenders, active projects, milestones, subcontractors, JV partners, and order book for Engineering, Procurement & Construction engagements.',
+    icon: Building2,
+    href: '/devtools/epc-order-tracker',
+    tags: ['EPC', 'Project Management', 'Demo Preview'],
+    demo: true,
   }
 ];
 
@@ -51,9 +61,16 @@ export default function DevTools() {
                           <Icon className="w-6 h-6" />
                         </div>
                         <div className="flex-1">
-                          <h3 className="font-accent text-xl font-semibold mb-2 group-hover:text-primary transition-colors" data-testid={`text-tool-title-${tool.id}`}>
-                            {tool.title}
-                          </h3>
+                          <div className="flex items-center gap-2 flex-wrap mb-2">
+                            <h3 className="font-accent text-xl font-semibold group-hover:text-primary transition-colors" data-testid={`text-tool-title-${tool.id}`}>
+                              {tool.title}
+                            </h3>
+                            {tool.demo && (
+                              <span className="flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium border border-yellow-500/40 bg-yellow-500/10 text-yellow-400">
+                                <Lock className="w-2.5 h-2.5" /> Demo
+                              </span>
+                            )}
+                          </div>
                         </div>
                       </div>
                       
