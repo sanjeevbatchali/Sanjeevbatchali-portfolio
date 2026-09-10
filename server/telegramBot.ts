@@ -2,9 +2,17 @@ import { Telegraf, Markup } from "telegraf";
 import OpenAI from "openai";
 import { buildBlogPost, saveBlogPost, createMarkdownContent, type BlogPost } from "./blogWriter";
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+let openai: OpenAI | null = null;
+
+function getOpenAIClient(): OpenAI {
+  if (!openai) {
+    openai = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY,
+    });
+  }
+
+  return openai;
+}
 
 type SessionStep =
   | "idle"
@@ -75,7 +83,7 @@ Important:
 - The body MUST start with the title as an H1 header (# Title) on the first line, followed by the content. This matches the existing blog format.
 - Make the excerpt compelling and concise`;
 
-  const response = await openai.chat.completions.create({
+  const response = await getOpenAIClient().chat.completions.create({
     model: "gpt-4o",
     messages: [{ role: "user", content: prompt }],
     response_format: { type: "json_object" },
@@ -128,7 +136,7 @@ Important:
 - Maintain the same markdown formatting
 - The body MUST start with the title as an H1 header (# Title) on the first line, followed by the content`;
 
-  const response = await openai.chat.completions.create({
+  const response = await getOpenAIClient().chat.completions.create({
     model: "gpt-4o",
     messages: [{ role: "user", content: prompt }],
     response_format: { type: "json_object" },

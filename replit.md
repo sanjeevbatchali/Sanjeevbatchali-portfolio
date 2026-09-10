@@ -10,6 +10,12 @@ The project features:
 - A dedicated "Blog" section for finance and career articles.
 - A "DevTools" section including a comprehensive loan amortization calculator.
 
+## Running on Replit
+- The `Start application` workflow runs `npm run dev`.
+- The Express server listens on port 5000 and serves both the API and Vite frontend.
+- The portfolio works without optional service credentials.
+- `TELEGRAM_BOT_TOKEN` and `OPENAI_API_KEY` are only needed for the Telegram blog-writing bot.
+
 ## User Preferences
 Preferred communication style: Simple, everyday language.
 
