@@ -3,7 +3,7 @@ import SEOHead from '@/components/SEOHead';
 import ContactSection from '@/components/ContactSection';
 import CosmicWave from '@/components/CosmicWave';
 import { Link } from 'wouter';
-import { Calculator, ArrowRight, Building2, Lock } from 'lucide-react';
+import { Calculator, ArrowRight, Building2, Lock, SunMedium } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 
 const tools = [
@@ -24,6 +24,15 @@ const tools = [
     href: '/devtools/epc-order-tracker',
     tags: ['EPC', 'Project Management', 'Demo Preview'],
     demo: true,
+  },
+  {
+    id: 'solar-dscr-model',
+    title: 'Solar DSCR Model Generator',
+    description: 'Size senior debt against a target DSCR, review live project returns, and download a formula-linked Excel model for a utility-scale solar project.',
+    icon: SunMedium,
+    href: '/devtools/solar-dscr-model',
+    tags: ['Project Finance', 'Solar', 'Excel Model'],
+    demo: false,
   }
 ];
 
