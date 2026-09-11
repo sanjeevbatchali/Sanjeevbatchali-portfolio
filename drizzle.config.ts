@@ -1,14 +1,15 @@
-import { defineConfig } from "drizzle-kit";
+import type { Config } from "drizzle-kit";
 
-if (!process.env.DATABASE_URL) {
-  throw new Error("DATABASE_URL, ensure the database is provisioned");
-}
+const databaseUrl =
+  process.env.NETLIFY_DATABASE_URL ??
+  process.env.NETLIFY_DB_URL ??
+  process.env.DATABASE_URL;
 
-export default defineConfig({
-  out: "./migrations",
+const config = {
+  out: "./netlify/database/migrations",
   schema: "./shared/schema.ts",
   dialect: "postgresql",
-  dbCredentials: {
-    url: process.env.DATABASE_URL,
-  },
-});
+  ...(databaseUrl ? { dbCredentials: { url: databaseUrl } } : {}),
+} satisfies Config;
+
+export default config;
