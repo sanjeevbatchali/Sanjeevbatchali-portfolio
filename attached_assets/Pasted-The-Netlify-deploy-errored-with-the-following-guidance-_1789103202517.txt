@@ -1,0 +1,49 @@
+The Netlify deploy errored, with the following guidance provided:
+
+Looking at the build logs, the output is truncated and doesn't show the full error. However, based on the repository and the custom publish path `dist/public` detected at [line 8](#L8), I can identify a likely configuration issue.
+
+Let me outline the diagnosis based on what's visible:
+
+**Diagnosis**
+
+The build is configured to publish from `dist/public`, but a standard Vite build outputs to `dist` by default. This mismatch will cause a deploy failure because Netlify won't find built files in `dist/public`.
+
+**Solution**
+
+You need to align your Vite output directory with the Netlify publish path. You have two options:
+
+**Option 1:** Update your `vite.config.js` to output to `dist/public`:
+
+```js
+import { defineConfig } from 'vite'
+
+export default defineConfig({
+  build: {
+    outDir: 'dist/public'
+  }
+})
+```
+
+**Option 2:** Update your Netlify publish directory to match Vite's default output (`dist`). In your `netlify.toml`:
+
+```toml
+[build]
+  command = "npm run build"
+  publish = "dist"
+```
+
+Or update the publish directory in your Netlify site settings UI to `dist`.
+
+Option 2 is recommended as it requires fewer changes and aligns with Vite's conventions. Check your [`netlify.toml`](https://github.com/sanjeevbatchali/Sanjeevbatchali-portfolio/blob/main/netlify.toml) or Netlify site settings to confirm where the `dist/public` path is being set, and update it to `dist`.
+
+The relevant error logs are:
+
+Line 0: build-image version: 969defd95f3977f8de9cb1f48802a7e6f3d8c0b3 (noble-new-builds)
+Line 1: buildbot version: f845e53dbe81c8f4c0df14e58d92183a02a40121
+Line 2: Fetching cached dependencies
+Line 3: Failed to fetch cache, continuing with build
+Line 4: Starting to prepare the repo for build
+Line 5: No cached dependencies found. Cloning fresh repo
+Line 6: git clone --filter=blob:none https://github.com/sanjeevbatchali/Sanjeevbatchali-portfolio
+Line 7: Preparing Git Reference refs/heads/main
+Line 8: Custom publish path detected. Proceeding with the specified path: 'dist/public'
